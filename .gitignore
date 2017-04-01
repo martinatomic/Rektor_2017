@@ -151,6 +151,7 @@ pythontex-files-*/
 
 # todonotes
 *.tdo
+rektor_2017.pdf
 
 # xindy
 *.xdy
