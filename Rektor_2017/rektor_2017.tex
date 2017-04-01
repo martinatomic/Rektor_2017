@@ -1,0 +1,287 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper]{article}
+\usepackage{times}
+\usepackage[utf8]{inputenc}
+\usepackage[croatian]{babel}
+\usepackage[T1]{fontenc} % Latin Modern
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%  MATEMATICKI PAKETI %%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{esvect}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% PAKETI ZA SLIKE  %%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%    PRORED 1.5   %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\baselinestretch}{1.5}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% TABLICA - ANTUN %%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{array}
+\usepackage{multirow}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\usepackage{ctable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% TABLICA - MARTINA %%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+  \edef\arraystretch{#1}%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{*\c@MaxMatrixCols c}}
+\makeatother
+
+
+
+%%%% LATEX KOD ZA KORISTENJE TABLICE %%%%
+%%% PRIMJER %%%
+
+%\setlength\extrarowheight{1pt}
+%\begin{table}[h]
+%\centering
+%\caption{Tablica s prikazom }
+%\label{prva}
+%\begin{tabular}{|l|c|}
+%\hline
+%\textbf{txt} &  \\ \hline 
+%txt & txt    \\ 
+%txt & txt   \\ \hline
+%txt & txt    \\ \hline
+%\end{tabular}
+%\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% DIO ZA UNOS ISJECAKA KODA %%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{listings}
+\usepackage{color}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+ 
+\lstdefinestyle{mystyle}{   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=1
+}
+ 
+\lstset{style=mystyle}
+
+%\lstinputlisting[language=Matlab, firstline=1, lastline=4, numbers=left, frame=single, label={lst:prvi}, caption={Diskretizacija sustava korištenjem Matlaba}, captionpos=b]{peti.m} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%----------------------------
+% za uredjenje stranice
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy} 
+\lhead{\leftmark}
+\rhead{\rightmark}
+\usepackage{titlesec} %za točku iza broja sectiona
+\titleformat{\section}{\huge\bfseries}{\thetitle.\quad}{0em}{}
+\titleformat{\subsection}{\LARGE\bfseries}{\thetitle.\quad}{0em}{}
+\titleformat{\subsubsection}{\Large\bfseries}{\thetitle.\quad}{0em}{}
+\titleformat{\paragraph}
+{\normalfont\large\bfseries}{\thetitle.\quad}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\setcounter{secnumdepth}{5}
+
+\usepackage{indentfirst} %uvlacenje prvog paragrafa
+% primjer pozivanja sectiona
+% \section*{UVOD} \pdfbookmark{UVOD}{section:UVOD}
+
+\usepackage{tocloft}
+\usepackage{import}
+\usepackage{standalone}
+\graphicspath{{Uvod/}, {Ciljevi/}, {Materijal/}, {Rasprava/}, {Rezultati/}} 
+
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = black, %Colour for external hyperlinks
+  linkcolor    = black, %Colour of internal links
+  citecolor   = blue %Colour of citations
+}
+
+\usepackage{subcaption}
+\usepackage{lscape}
+\begin{document}
+
+\begin{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% NASLOVNA STRANICA %%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\center
+
+\textsc{\huge Sveučilište u Zagrebu} \\
+\textsc{\huge Fakultet Elektrotehnike i Računarstva}
+
+\vspace*{\fill}
+\emph{\large Matija Bedeković, Bruno Marić, Martina Tomić}\\
+\vspace{0.5cm}
+\begin{Huge}
+	Design and development of a small-scale multi-rotor UAV with moving mass control
+\end{Huge}
+\vspace*{\fill}
+
+Zagreb, \the\year
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% DRUGA STRANICA - TRAZENI OPIS %%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{large}
+	Ovaj rad izrađen je u Laboratoriju za Robotiku i Inteligentne Sustave Upravljanja, na Zavodu za Automatiku i Računalno Inženjerstvo pod vodstvom prof. dr. sc. Stjepana Bogdana i predan je za natječaj za dodjelu Rektorove nagrade u akademskoj godini 2016./2017.
+	\end{large}
+\vspace*{\fill}
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% UBACIVANJE SADRZAJA, POPISA SLIKA I TABLICA %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\newpage
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+\listoffigures
+\thispagestyle{empty}
+\newpage
+\listoftables
+\thispagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%TAKSTUALNI DIO RADA %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+\section{Uvod}
+\input{Uvod/Uvod}
+
+%%%%% ODKOMENTIRATI DA UVOD BUDE STRANICA 1 %%%%%%
+%\setcounter{page}{1}
+
+\newpage
+\section{Opći i specifični ciljevi rada} 
+\input{Ciljevi/Ciljevi}
+
+\newpage
+\section{Materijal i metode}
+\input{Materijal/Materijal}
+
+\newpage
+\section{Rezultati}
+\input{Rezultati/Rezultati}
+
+\newpage
+\section{Rasprava}
+\input{Rasprava/Rasprava}
+
+
+\newpage
+\section*{Zaključak} 
+\addcontentsline{toc}{section}{\protect\numberline{}Zaključak}
+\input{Zakljucak/Zakljucak}
+\thispagestyle{plain}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% FINALNI DETALJI RADA %%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\section*{Zahvale}
+\addcontentsline{toc}{section}{\protect\numberline{}Zahvale}
+\input{Zahvale/Zahvale}
+\thispagestyle{plain}
+
+\newpage
+\section*{Literatura}
+\addcontentsline{toc}{section}{\protect\numberline{}Literatura}
+\input{Literatura/Literatura}
+\thispagestyle{plain}
+
+\newpage
+\section*{Sažetak} 
+\addcontentsline{toc}{section}{\protect\numberline{}Sažetak}
+\input{Sazetak/Sazetak}
+\thispagestyle{plain}
+
+\newpage
+\section*{Summary} 
+\addcontentsline{toc}{section}{\protect\numberline{}Summary}
+\input{Summary/Summary}
+\thispagestyle{plain}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
