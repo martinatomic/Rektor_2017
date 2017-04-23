@@ -168,7 +168,7 @@ CAD MODEL mehaničke konstrukcije - BRUNO
 
 U ovom poglavlju je opisana mehanička konstrukcija letjelice. Osnova je postojeća laboratorijska letjelica ARDUCOPTER. Letjelica ARDUCOPTER je standarnog dizajna, s četiri pogonska $brushles DC$ motora s pripadnim $ESC$ pogonima. Zbog jednostavnog dizajna, vrlo je jednostavno raditi razne promjene i dodavati razne upravljačke uređaje, senzore i aktuatore. U laboratoriju trenutno postoji nekoliko modela letjelica ovog tipa koje se koriste za većinu eksperimenata. Dizajn i veličina letjelice je prikladna za sve eksperimente koji se provode u laboratoriju, uključujući planiranje i izvođenje trajektorija u prostoru, manipulaciju objekata i drugo. Upravo zato odlučeno je modificirati jednu od postojećih konstrukcija te izraditi platformu za eksperimentalno testiranje novog koncepta upravljanja višerotorskom letjelicom. Glavna modifikacija se odnosi na dizajniranje i izradu mehanizma kojim će se omogućiti pomak mase na kraku. Također, potrebno je smjestiti sve ostale komponente nužne za upravljanje letjelicom, poput kontrolera leta i upravljačkog sklopovlja pomičnih masa.
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{figures/arducopter_with_PCB.png}
 	\caption{3D model modificirane letjelice ARDUCOPTER}
@@ -202,11 +202,11 @@ Predstavljenu postojeću letjelicu ARDUCOPTER potrebno je modificirati na sljede
 \end{center}
 
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{figures/arducopter_original.png}
 	\caption{3D model postojeće letjelice ARDUCOPTER}
-	\label{Slika:3D_drone_original}
+	\label{fig:3D_drone_original}
 \end{figure}
 
 \subsection{Klizni mehanizam pokretne mase}
@@ -214,20 +214,20 @@ Predstavljenu postojeću letjelicu ARDUCOPTER potrebno je modificirati na sljede
 Budući da se novi koncept upravljanja letjelice zasniva na promjeni centra mase, koje je realizirano pomičnim masama na krakovima, potrebno je izraditi mehanizam kretanja pokretne mase po kraku letjelice. Kretanje pomične mase je linijsko, a mehanizam kretanja mora biti realiziran s minimalnim trenjem. Kretanje pokretne mase je ostvareno električnim aktuatorom.
 
 \subsubsection{Aktuator}
-Zadaća aktuatora za pokretnu masu je gibanje mase po kraku letjelice, čime se ostvaruje promjena centra mase letjelice. Kako bi ukupna masa letjelice bila manja, fizička masa aktuatora na svakom kraku se koristi kao pokretna masa. Za aktuator je odabran koračni motor POL, prikazan slikom \ref{Slika:stepper_motor}.
+Zadaća aktuatora pokretne mase je gibanje mase po kraku letjelice, čime se ostvaruje promjena centra mase letjelice. Kako bi ukupna masa letjelice bila manja, fizička masa aktuatora na svakom kraku se koristi kao pokretna masa. Za aktuator je odabran koračni motor NAPISATI MODEL, prikazan slikom \ref{fig:stepper_motor}. Specifikacije koračnog motora su prikazane tablicom \ref{tab:specifikacija_steppera}.
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.3\textwidth]{figures/StepperMotor.jpg}
 	\caption{Koračni motor}
-	\label{Slika:stepper_motor}
+	\label{fig:stepper_motor}
 \end{figure}
 
 
-\begin{table}[h]
+\begin{table}[H]
 	\centering
 	\caption{Specifikacije koračnog motora }
-	\label{prva}
+	\label{tab:specifikacija_steppera}
 	\begin{tabular}{|l|c|}
 		\hline
 		\textbf{Veličina} & 35mm x 35mm x 36mm, neuključujući osovinu  \\ \hline 
@@ -241,15 +241,144 @@ Zadaća aktuatora za pokretnu masu je gibanje mase po kraku letjelice, čime se 
 	\end{tabular}
 \end{table}
 
-
-\subsubsection{Klizni mehanizam}
-
-\subsubsection{Zupčasti prijenos}
+Razlog zašto je odabran koračni motor je mogućnost korištenja upravljanja pozicijom motora u otvorenoj petlji. Točnije, pravilnim upravljanjem i brojanjem koraka koje je motor napravio, moguće je u svakom trenutku znati u kojem položaju se motor nalazi te samim time i na kojoj poziciji se nalazi pokretna masa. Ukoliko bi se koristio neki drugi tip motora, bilo bi potrebno dodati senzore poput enkodera kako bi se moglo pratiti kretanje i položaj mase na kraku.
 
 
-\subsection{Izrada dijelova}
 
-\subsection{Položaj upravljačkog sklopovlja}
+\subsubsection{Kretanje po kraku letjelice}
+
+Kretanje mase po kraku je linijsko. Kako bi kretanje mase imalo minimalno trenje, odabran je klizni mehanizam prikazan slikom \ref{fig:klizni_mehanizam}. Klizni mehanizam je montiran s doljnje strane kraka, a za aluminijsku kvadratnu cijev je pričvršćen s dva vijka. Klizni mehanizam se sastoji od vodilice i kolica. Na kolicima se nalazi klizni mehanizam koji se sastoji od sitnih kuglica koje omogućavaju klizno gibanje s malim trenjem. Na kolica klizne mase je montiran posebno konstruiran prihvat koračnog motora(slika \ref{fig:stepper_bracket}), kojim se koračni motor učvršćuje na klizni mehanizam.
+
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{.6\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{figures/linear_guide_7mm.png}
+  \captionof{figure}{Klizni mehanizam}
+  \label{fig:klizni_mehanizam}
+\end{minipage}%
+\begin{minipage}{.4\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{figures/stepper_bracket.png}
+  \captionof{figure}{Prihvat koračnog motora}
+  \label{fig:stepper_bracket}
+\end{minipage}
+\end{figure}
+
+Rotacija koračnih motora se prenosi na linijsko gibanje po kraku pomoću zupčastog prijenosa. Zupčasti prijenos je dizajniran tako da jedan puni okret koračnog motora pokriva cijeli potrebni raspon linijskog gibanje na kraku. UBACITI OMJER ZUPČASTOG PRIJENOSA.
+Zupčasta letva(slika \ref{fig:gear_rack}) je zaljepljena na bočnu stranu aluminijske kvadratne cijevi pomoću dvokomponentnog ljepila. Zupčanik(slika \ref{fig:gear_gear}) se montira na adapter osovine koračnog motora pomoću 4 vijka. 
+
+
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{figures/gear_rack_6mm.png}
+  \caption{Zupčasta letva}
+  \label{fig:gear_rack}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{figures/gear_25_07.png}
+  \caption{Zupčanik}
+  \label{fig:gear_gear}
+\end{subfigure}
+
+\caption{Prikaz elemenata zupčastog prijenosa}
+\label{fig:gear}
+\end{figure}
+
+
+\subsubsection{Izrada i montaža}
+
+Za dizajniranje mehaničke konstrukcije korišten je CAD alat SOLIDWORKS. Navedeni alat omogućava 3D modeliranje svih dijelova od kojih je izrađena letjelica. Nakon dizajniranja svakog pojedinog dijela, prelazi se na spajanje dijelova u veće cjeline. Prednost 3D modeliranja je trenutni pregled izgleda konstrukcije, kao i mogućnost izvoza svakog pojedinog dijela u neki od standardnih formata. 
+
+U izradi nekih dijelova konstrukcije korištena je tehnologija 3D printanja. 3D printanje je jednostavno i efikasno rješenje u izradi prototipa. Nakon izrade 3D modela u nekom od CAD alata, u ovom slučaju SOLIDWORKS, radi se priprema pojedinog elementa za izradu. Priprema uključuje učitavanje elementa u poseban softver proizvođača 3D printera. Nakon postavljanja svih parametara izrade poput preciznosti, ispunjenosti i dr. slijedi izvoz podataka u poseban format koji koristi 3D printer. Nakon toga slijedi izrada koja je u potpunosti automatizirana.
+
+Nakon pripreme svih dijelova, slijedi montaža. Slikom \ref{fig:arm_assembly} prikazan je konačni 3D model pokretne mase na kraku letjelice.
+
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{figures/arm_assembly1.png}
+  \caption{Pogled 1}
+  \label{fig:sub1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{figures/arm_assembly2.png}
+  \caption{Pogled 2}
+  \label{fig:sub2}
+\end{subfigure}
+\caption{Prikaz kliznog mehanizma pokretne mase sa zupčastim prijenosom na kraku letjelice}
+\label{fig:arm_assembly}
+\end{figure}
+
+
+STVARNA SLIKA!!!!
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{figures/arm_assembly1.png}
+  \caption{Pogled 1}
+  \label{fig:sub1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{figures/arm_assembly2.png}
+  \caption{Pogled 2}
+  \label{fig:sub2}
+\end{subfigure}
+\caption{Prikaz kliznog mehanizma pokretne mase sa zupčastim prijenosom na kraku letjelice}
+\label{fig:arm_assembly}
+\end{figure}
+
+\subsection{Horizontalna montaža sastavnih dijelova letjelice}
+Modularni dizajn letjelice ARDUCOPTER omogućava jednostavno proširenje letjelice. Iznad ravnine krakova moguće je dodavati razne slojeve. Slojevi su razmaknuti distancerima s navojem M3. 
+
+\subsubsection{Sloj kontrolera leta}
+
+Kontroler leta PIXHAWK se koristi za cjelokupno upravljanje letjelicom. U samom kontroleru su ugrađeni svi potrebni senzori za let, poput žiroskopa, akcelerometra i dr. Kako bi što točnije očitavali kuteve letjelice, kontroler je potrebno što bliže osima rotacije letjelice postaviti. U ovom slučaju kontroler je postaljen neposredno iznad ravnine krakova. Položaj kontrolera leta prikazan je slikom \ref{fig:slot_pixhawk}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figures/arducopter_slot_pixhawk.png}
+	\caption{Sloj kontrolera leta}
+	\label{fig:slot_pixhawk}
+\end{figure}
+
+
+\subsubsection{Sloj upravljačkog sklopovlja}
+
+Iznad kontolera leta postavljeno je posebno izrađeno elektroničko slopovlje za upravljanje koračnim motorima. Dimenzija tiskane pločice je jednaka dimenziji bazne ploče koja se nalazi u ravnini krakova. Pločica je 
+razmaknuta od kontrolera leta pomoću distancera. Distanceri ulaze u točno pozicionirane rupe na tiskanoj pločici. Fiksiranje pločice je osigurano sljedećim slojem distancera koji su povezani standardnim navojem M3. Pozicioniranje upravljačkog sklopovlja je prikazano slikom \ref{fig:slot_pcb}.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figures/arducopter_slot_pcb.png}
+	\caption{Sloj upravljačkog sklopovlja}
+	\label{fig:slot_pcb}
+\end{figure}
+
+\subsubsection{Sloj za proširenje}
+Iznad upravljačkog sklopovlja, nalazi se prostor za daljnja proširenja. Daljnja proširenja predstavlja dodavanje raznih senzora za pozicioniranje u prostoru i sl. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figures/arducopter_slot_top.png}
+	\caption{Sloj za proširenje}
+	\label{fig:slot_top}
+\end{figure}
+
+\subsection{Prikaz rezalizacije mehaničke konstrukcije}
+OVDJE STAVITI FOTOGRAFIJE STVARNE LETJELICE
 
 
 \end{document}
