@@ -149,7 +149,7 @@
 \usepackage{tocloft}
 \usepackage{import}
 \usepackage{standalone}
-\graphicspath{{Uvod/}, {Ciljevi/}, {Materijal/}, {Rasprava/}, {Rezultati/}} 
+\graphicspath{{Uvod/}} 
 
 \hypersetup{
   colorlinks   = true, %Colours links instead of ugly boxes
@@ -162,6 +162,22 @@
 \usepackage{lscape}
 \begin{document}
 
-Literatura
+\bibliographystyle{plain}
+\begin{thebibliography}{9}
+
+\bibitem{haus1}
+  T. Haus, N. Prkut, K. Borovina, B. Marić, M. Orsag, S. Bogdan,
+  \emph{A novel concept of attitude control for large multirotor-UAVs based on moving mass control},
+  24th Mediterranean Conference on Control and Automation (MED),
+  2016.
+  
+\bibitem{haus2}
+  T. Haus, M. Orsag, S. Bogdan,
+  \emph{Design considerations for a large quadrotor with moving mass control},
+  International Conference on Unmanned Aircraft Systems (ICUAS),
+  2016.
+ 
+\end{thebibliography}
+
 
 \end{document}
