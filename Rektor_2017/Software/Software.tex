@@ -162,17 +162,39 @@
 \usepackage{lscape}
 \begin{document}
 	
-U sklopu razvoja letjelice razvijena je potrebna programska podrška. Zbog specifičnosti ovakvog pristupa upravljanju multirotorskim letjelicama postojeća programska rješenja ne zadovoljavaju specifične zahtjeve ovakvog načina upravljanja. Stoga je razvijeno vlastito programsko rješenje za predstavljeni problem. Zbog specifične sklopovske arhitekture letjelice, razvijena je programska potpora za dva različita sustava: kontroler pomičnih masa i Pixhawk kontroler leta.
+U sklopu razvoja letjelice razvijena je potrebna programska podrška. Zbog specifičnosti ovakvog pristupa upravljanju multirotorskim letjelicama postojeća programska rješenja ne zadovoljavaju specifične zahtjeve ovakvog načina upravljanja. Stoga je razvijeno vlastito programsko rješenje za predstavljeni problem. Zbog specifične sklopovske arhitekture letjelice, razvijena je programska potpora za dva različita sustava: kontroler pomičnih masa i Pixhawk kontroler leta. U nastavku je dan detaljniji pregled programskih rješenja za  obje platforme. 
 
 
 \subsection{Programska podrška za kontroler koračnih motora}
-Slike i tako nešto
 \begin{center}
 	\centering
 	\includegraphics[width=1\textwidth]{{data_flow_diagram}.PNG}
-	\captionof{figure}{Prikaz tokova podataka u SCU programskoj podršci}
-	\label{fig:}
+	\captionof{figure}{Prikaz modula i tokova podataka u programskoj podršci kontrolera koračnih motora}
+	\label{fig:scu_software}
 \end{center}
+Sklopovljem za pogon koračinh motora upravlja 32-bitni mikrokontroler STM32F4 familije (ARM M4 arhitekture). Zadaća upravljačkog sustava ove razine je
+slijeđenje proslijeđene reference pozicija pomičnih masa na kraku letjelice. Upravljački algoritam na mikrokontroleru generira impulsne signale i potrebne logičke signale koji se prosljeđuju na upravljačko sklopovlje koračnih motora. \newline
+Gibanje motora definirano je profilom brzine. Stoga upravljački algoritam daje impulse u točnim vremenskim razmacima kako bi se osiguralo slijeđenje zadanog profila brzine, a time i pravilno gibanje motora.
+
+\begin{center}
+	\centering
+	\includegraphics[width=0.9\textwidth]{{state_masina_stepper}.PNG}
+	\captionof{figure}{Ilustracija automata stanja za generiranje impulsnog signala koraka motora}
+	\label{fig:sm_stepper}
+\end{center}
+
+Na slici \ref{fig:sm_stepper} ilustriran je automat stanja kojim se ostvaruje željena dinamika koračnih motora. Kako je brzina motora proporcionalna 
+frekvenciji impulsnog signala STP, variranjem frekvencije impulsa ostvaruje se promjena brzine vrtnje motora. Nakon primjene reference položaja podiže se frekvencija impulsa te motor ubrzava do maksimalne brzine gdje je frekvencija impulsa konstantna. Približavanjem referentnom položaju usporava se frekvencija impulsa, a time i motor. \newline
+Pored samo automata stanja za generiranje impulsnog signala koraka, programski kod sadrži sljedeće module:
+\begin{itemize}
+	\item modul serijske komunikacije,
+	\item modul za upravljanje prekidnim sustavom,
+	\item modul za upravljanje vremenskim sklopovljem mikrokontrolera,
+	\item modul za upravljanje ulazno/izlaznim sklopovljem mikrokontrolera.
+\end{itemize}
+Zbog potrebe istovremenog upravljanja četiri koračna motora, u izradi upravljačkog programa iskorišten je \textit{real-time} operacijski sustav otvorenog koda \textit{FreeRTOS}\textsuperscript{TM}. Korištenje operacijskog sustava olakšalo je implementaciju paralelnog izvođenja upravljačkog algoritma motora. Na slici \ref{fig:scu_software} prikazana je struktura i interakcija programskih modula u sustavu. U modulima naziva MOTORn\_TASK
+ostvaren je upravljački algoritam motora, modulom MSG\_DECODE\_TASK dekodira se komunikacijski paket primljen putem serijske veze, a modulom TIM4\_IRQHandler upravlja se stanjima izlaznih logičkih signala i vremenskim sklopom mikrokontrolera. Programski moduli napravljeni su kao samostalne
+cjeline, a sa ostalim modula komuniciraju korištenjem redova poruka (eng. \textit{message queues}). Cjeloviti programski kod je javno dostupan na GitHub servisu. %TODO: dodaj referencu na dodatak u kojem stoji link na github repo
 
 \subsection{Programska podrška za Pixhawk kontroler leta}
 Podpoglavlje
