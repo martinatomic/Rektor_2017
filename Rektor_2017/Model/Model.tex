@@ -17,6 +17,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{esvect}
+\usepackage{bm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -149,7 +150,7 @@
 \usepackage{tocloft}
 \usepackage{import}
 \usepackage{standalone}
-\graphicspath{{Uvod/}, {Ciljevi/}, {Materijal/}, {Rasprava/}, {Rezultati/}} 
+\graphicspath{{figures/}} 
 
 \hypersetup{
   colorlinks   = true, %Colours links instead of ugly boxes
@@ -162,7 +163,27 @@
 \usepackage{lscape}
 \begin{document}
 
+U sklopu ovog poglavlja izveden je nelinearni matematički model letjelice koji opisuje njezinu rotaciju i translaciju. Na temelju tog modela obavlja se njegova linearizacija u svrhu dobivanja prijenosne funkcije sustava koja se potom koristi za upravljanje. 
 
-MATEMATICKI MODEL - MARTINA
+\medskip
+
+\subsection{Nelinearni dinamički model letjelice s pokretnim masama}
+
+Koordinatni sustav letjelice prikazan je slikom \ref{fig:mod}. Svi vektori korišteni za opis ovog sustava, uz iznimku sile gravitacije, izraženi su u lokalnom mobilnom koordinatnom sustavu letjelice označenom s $L_{0}$. Vektor sile gravitacije prikladno je izražen u globalnom nepomičnom koordinatnom sustavu $L_{I}$. $L_{CoG}$ označava koordinatni sustav vezan za centar mase letjelice te je on usklađen s $L_{0}$ koordinatnim sustavom.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.23]{model}
+	\caption{Koordinatni sustav letjelice \cite{haus1}}
+	\label{fig:mod}
+\end{figure}
+
+Matematičko modeliranje započinje se standardnim zapisom formule za proizvoljni vektor promjenjive duljine izražen u lokalnom mobilnom koordinatnom susavu letjelice ($L_{0}$).
+
+\begin{equation}
+\frac{d^{\omega}}{dt}(\boldsymbol{r}_{0}) =  \boldsymbol{\dot{r}}_{0} + \boldsymbol{\omega} \times \boldsymbol{r}_{0} 
+\label{eq:r0}
+\end{equation}
 
 \end{document}
