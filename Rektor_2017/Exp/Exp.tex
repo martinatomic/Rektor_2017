@@ -160,8 +160,31 @@
 
 \usepackage{subcaption}
 \usepackage{lscape}
-\begin{document}
 
-EXP
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+
+\begin{document}
+%TODO Ubaciti sliku letjelice na gimbalu na početak poglavlja 
+U svrhu verifikacije sustava upravljanja letjelica je postavljena na stalak s jednom osi rotacije (eng. \textit{single axis gimbal}). Os rotacije stalka postavljena je što bliže centru mase letjelice kako bi se osiguralo ponašanje što sličnije letu.
+Ovim pristupom omogućeno je fino podešavanje koeficijenata regulacijskih petlji pojedinačnih osi letjelice. Kao početna točka u postupku uzeti su parametri regulatora izračunati iz matematičkog modela letjelice. Mijenjanjem koeficijenata upravljačkih petlji ispitano je ponašanje sustava na promjenu reference kuta i reakcija sustava na poremećaj. Poremećaj na letjelicu ostvaren je kao impuls vanjske sile na krak letjelice pri čemu dolazi do odmaka od zadanih vrijednosti kuta poniranja ili valjanja. Cilj postupka je pronaći dobar odnos između brzine odziva na promjenu referentne vrijednosti i kvalitete kompenzacije poremećaja. U nastavku su prikazani rezultati za parametre regulacijskih petlji iz tablice \ref{tab:reg_param}. 
+
+\setlength\extrarowheight{1pt}
+\begin{table}[H]
+	\centering
+	\caption{Parametri regulator}
+	\label{tab:reg_param}
+	\begin{tabular}{|C{1cm}|C{1cm}|C{1cm}||C{1cm}|C{1cm}|C{1cm}|}
+		\hline
+		\multicolumn{3}{|c||}{Vanjska petlja} & \multicolumn{3}{c|}{Unutarnja petlja} \\ \hline
+		P    \hfill       & I    \hfill    & D    \hfill       & P     \hfill     & I       \hfill     & D        \\ \hline
+		1.3    \hfill     & 0     \hfill   & 0.03   \hfill     & 1.3      \hfill   & 0.07     \hfill    & 0        \\ \hline
+	\end{tabular}
+\end{table}
+
+
 
 \end{document}
