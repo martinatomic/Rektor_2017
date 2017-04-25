@@ -166,7 +166,7 @@ POGLAVLJE NAZVATI ELEKTRONIČKO SLOPOVLJE
 
 U ovom poglavlju je predstavljen dizajn i izrada elektroničkog sklopovlja potrebnog za upravljanje multirotorskom letjelicom s pomičnim masama. Elektroničko sklopovlje je ciljano dizajnirano za upravljanje koračnim motorima koji u ovom slučaju predstavljaju pokretne mase. Također, kao pripremu za daljnja proširenja, dodana su standarna sučelja za komunikaciju i akuatore koje u ovom trenutku očekujemo da bi se mogli primjeniti na ovoj letjelici. Elektroničko sklopovlje je zasnovano na mikrokontroleru STM32 tipa F4. Dodatno, na elektroničkom sklopovlju trebaju postojati izvodi napajanja standardnih iznosa $3.3 V$ i $5 V$. Sklopovlje se napaja iz baterije nazivnog napona $12 V$. 
 
-Dizajn elektroničkog sklopovlja izrađen je u CAD alatu Altium. Altium predstavlja standardni CAD alat za izradu elektroničkog sklopovlja. U okviru ovog alata, definiraju se sve potrebne elektroničke komponente, s pripadnim fizičkim rasporedom veza i mogućnošću dodavanja 3D modela svake pojedine komponente. Prvo se pristupa projektiranju sklopovlja na shematskoj razini. U ovom koraku definiraju se sve sheme, određuju se komponente koje je kasnije potrebno kupiti sa svim pripadnim podacima. Nakon završetka prve faze projektiranja, slijedi fizički raspored komponenata na tiskanu pločicu i povezivanje svih električnih veza. U obije faze projekiranja, softver omogućava kontrolu prema zadanim postavkama te na taj način upozorava korisnika ukoliko je došlo do kršenja zadanih pravila, poput kratkih spojeva, prebliskih električnih vodova i slično.
+Dizajn elektroničkog sklopovlja izrađen je u CAD alatu Altium Designer. Altium predstavlja standardni CAD alat za izradu elektroničkog sklopovlja. U okviru ovog alata, definiraju se sve potrebne elektroničke komponente, s pripadnim fizičkim rasporedom veza i mogućnošću dodavanja 3D modela svake pojedine komponente. Prvo se pristupa projektiranju sklopovlja na shematskoj razini. U ovom koraku definiraju se sve sheme, određuju se komponente koje je kasnije potrebno kupiti sa svim pripadnim podacima. Nakon završetka prve faze projektiranja, slijedi fizički raspored komponenata na tiskanu pločicu i povezivanje svih električnih veza. U obije faze projekiranja, softver omogućava kontrolu prema zadanim postavkama te na taj način upozorava korisnika ukoliko je došlo do kršenja zadanih pravila, poput kratkih spojeva, prebliskih električnih vodova i slično.
 
 Funkcionalnost elektroničkog sklopovlja i programske potpore je provjerena izradom prototipa. Prototip je realiziran perforiranom pločicom, na koju su postavljene i povezane sve bitne komponente, prvenstveno pogoni koračnih motora. Upravljanje pogonima koračnih motora omogućeno je razvojnom pločicom STM Discovery, koja je bazirana na STM32 mikrokontroleru tipa F4, koji je korišten i u konačnom posebno prilagođenom sklopovlju.
 
@@ -302,12 +302,191 @@ Sklop A4988 se napaja izravno s baterije, a napajanje logike je ostvareno koriš
 
 \subsubsection{Konektori}
 
+Za ispravno i sigurno povezivanje elektroničkog sklopovlja s okolnim uređajima potrebno je ispravno odabrati konektore. Konektori korišteni na ovom elektroničkom sklopu su:
+\begin{center}
+	\begin{itemize}
+		\item Konektor za DC napajanje, kutni. Navedeni konektor se koristi za spajanje elektroničkog sklopovlja na izvor napajanja. Specifikacije konektora zadovoljavaju navedenu primjenu, a prikazane su tablicom \ref{tab:specifikacija_supply_connector}.
+		
+\begin{table}[H]
+	\centering
+	\caption{Specifikacije konektora DC napajanja: }
+	\label{tab:specifikacija_supply_connector}
+	\begin{tabular}{|l|c|}
+		\hline
+		\textbf{Proizvođač} & Molex \\ \hline 
+		\textbf{Model} & 172310-1102 \\ \hline 
+		\textbf{Dobavljač} & Farnell \\ \hline 
+		\textbf{Broj pinova} & 2 \\ \hline 
+		\textbf{Način motaže} & Trough hole    \\ \hline
+		\textbf{Pitch} & 3.50 mm    \\ \hline 
+		\textbf{Maksimalni napon} & 400 V \\ \hline 
+		\textbf{Maksimalna struja} & 14 A \\ \hline
+		\textbf{Otpor izolacije} & 100 MOhm \\ \hline
+	\end{tabular}
+\end{table}		
+		
+		\item Konektor za programiranje mikrokontrolera. Spajanjem specijalnog programatora na ovaj konektor, izvodi se programiranje mikrokontrolera.
+		
+		\item Konektor za serijsku vezu, korišten za upravljanje koračnim motorima. Navedeni tip konektora se koristi i na kontroleru leta Pixhawk. Zbog svog dizajna, kontroler je otporan na vibracije, što je izrazito bitno za primjenu na letjelici. Specifikacije konektora su prikazane tablicom \ref{tab:specifikacija_connector_serial}.
+		
+\begin{table}[H]
+	\centering
+	\caption{Specifikacije konektora serijske veze: }
+	\label{tab:specifikacija_connector_serial}
+	\begin{tabular}{|l|c|}
+		\hline
+		\textbf{Proizvođač} & JST \\ \hline 
+		\textbf{Serija proizvoda} & GH \\ \hline 
+		\textbf{Dobavljač} & RS \\ \hline 
+		\textbf{Broj pinova} & 3 \\ \hline 
+		\textbf{Način motaže} & Surface Mount    \\ \hline
+		\textbf{Pitch} & 1.25 mm    \\ \hline 
+		\textbf{Maksimalni napon} & 50 V  ac/dc\\ \hline 
+		\textbf{Maksimalna struja} & 1 A \\ \hline
+	\end{tabular}
+\end{table}		
+
+		
+		\item Konektor za Dynamixel motore. Zbog paralelnog načina spajanja motora, jedan konektor na programskom sklopovlju je dovoljan za upravljanje s više Dynamixel motora. Konektor koji se nalazi na ovom sklopovlju je identičan konektoru na Dynamixel motoru. Specifikacije konektora su prikazane tablicom \ref{tab:specifikacija_connector_dynamixel}.
+		
+\begin{table}[H]
+	\centering
+	\caption{Specifikacije konektora Dynamixel motora: }
+	\label{tab:specifikacija_connector_dynamixel}
+	\begin{tabular}{|l|c|}
+		\hline
+		\textbf{Proizvođač} & Molex \\ \hline 
+		\textbf{Serija proizvoda} & SPOX 5267 \\ \hline 
+		\textbf{Dobavljač} & Farnell \\ \hline 
+		\textbf{Broj pinova} & 3 \\ \hline 
+		\textbf{Način motaže} & Trough Hole    \\ \hline
+		\textbf{Pitch} & 2.5 mm    \\ \hline 
+		\textbf{Maksimalni napon} & 250 V \\ \hline 
+		\textbf{Maksimalna struja} & 3 A \\ \hline
+	\end{tabular}
+\end{table}
+		
+		\item Konektori za spajanje faza koračnih motora. Upravljanje naponima faza koračnih motora se ostvaruje pomoću 4 žice, dvije po fazi. Budući da na koračnim motorima ne postoji poseban konektor, odabran je jednostavni konektor u koji se žice faza koračnih motora fiksiraju pomoću vijka.
+		
+\begin{table}[H]
+	\centering
+	\caption{Specifikacije blok konektor za spajanje koračnih motora: }
+	\label{tab:specifikacija_connector_terminal}
+	\begin{tabular}{|l|c|}
+		\hline
+		\textbf{Proizvođač} & Phoenix Contact \\ \hline 
+		\textbf{Serija proizvoda} & MPT \\ \hline 
+		\textbf{Dobavljač} & Farnell \\ \hline 
+		\textbf{Broj pinova} & 4 \\ \hline 
+		\textbf{Način motaže} & Trough Hole    \\ \hline
+		\textbf{Pitch} & 2.54 mm    \\ \hline 
+		\textbf{Površina vodiča, CSA} & $0.5 mm^2$     \\ \hline 
+		\textbf{Maksimalni napon} & 125 V \\ \hline 
+		\textbf{Maksimalna struja} & 6 A \\ \hline
+	\end{tabular}
+\end{table}
+		
+		
+		\item Konektor za CAN komunikaciju. Navedeni konektor sadrži potrebne kontakte za napajanje i dvije podatkovne linije. Konektor je iste serije kao i konektor za serijsku vezu, osnovna razlika je u broju pinova. Specijfikacije konektora za CAN komunikaciju su prikazane tablicom \ref{tab:specifikacija_connector_CAN}.
+		
+\begin{table}[H]
+	\centering
+	\caption{Specifikacije konektora CAN komunikacije: }
+	\label{tab:specifikacija_connector_CAN}
+	\begin{tabular}{|l|c|}
+		\hline
+		\textbf{Proizvođač} & JST \\ \hline 
+		\textbf{Serija proizvoda} & GH \\ \hline 
+		\textbf{Dobavljač} & RS \\ \hline 
+		\textbf{Broj pinova} & 4 \\ \hline 
+		\textbf{Način motaže} & Surface Mount    \\ \hline
+		\textbf{Pitch} & 1.25 mm    \\ \hline 
+		\textbf{Maksimalni napon} & 50 V  ac/dc\\ \hline 
+		\textbf{Maksimalna struja} & 1 A \\ \hline
+	\end{tabular}
+\end{table}
+		
+		
+		\item Konektor za slobodne pinove. Na elektroničkom slopovlju postoje izvodi svih naponski razina kao i 5 izravnih spojeva na GPIO izlaze mikrokontrolera. Namjena ovog konektora je omogućiti buduće modifikacije i proširenja funkcionalnosti.	
+		
+	\end{itemize}
+\end{center}
+
 
 
 \subsubsection{Dynamixel}
+Upravljanje Dynamixel motorima ostvaruje se prikladnom elektroničkom i programskom potporom. Osnova elektroničkog sklopovlja za Dynamixel komunikaciju je sklop za dvosmjernu komunikaciju. Mikrokontroler upravlja sklopom za dvosmjernu komunikaciju, koristeći 3 signala: DYN\_SEL(odabir smjera komunikacije), DYN\_RX(primanje podatka s Dynamixel motora) i DYN\_TX(slanje podatka na Dynamixel motore). NAPISATI ČEMU SLUŽI HRPA OTPORNIKA I TRANZISTORA!!! Pored Dynamixel komunikacije, potrebno je dodati i napajanje. Napajanje je izravno s baterije, a stabilizacija napona je ostvarena kondenzatorom iznosa 220 uF. Kondenzator se na tiskanoj pločici nalazi neposredno pored konektora za Dynamixel.
+
+\begin{table}[H]
+	\centering
+	\caption{Specifikacije sklopa za dvosmjernu komunikaciju: }
+	\label{tab:specifikacija_dynamixel_buffer}
+	\begin{tabular}{|l|c|}
+		\hline
+		\textbf{Proizvođač} & Texas Instuments \\ \hline 
+		\textbf{Model} & SN74LVC2G241DCTR \\ \hline 
+		\textbf{Način montaže} & Surface Mount, SSOP-8 \\ \hline 
+		\textbf{Broj pinova} & 8 \\ \hline 
+		\textbf{Minimalni napon napajanja} & 1.65 V \\ \hline 
+		\textbf{Maksimalni napon napajanja} & 5.5 V    \\ \hline
+	\end{tabular}
+\end{table}
+
+
 \subsubsection{CAN}
+Fizički sloj CAN komunikacije je ostvaren primjenom posebnog sklopa za CAN komunikaciju. Specifikacije sklopa su prikazane tablicom \ref{tab:specifikacija_CAN_bus}. Naveni sklop zadovoljava standard norme ISO 11898-2, za fizički sloj CAN komunikacije visoke brzine. Napajanje sklopa je ostvareno korištenjem reguliranog napona 3.3V, uz dodavanje dodatnih kondenzatora za stabilizaciju napona. Kondenzatori su na tiskanoj pločici postavljeni neposredno pored sklopa. Mikrokontroler upravlja primanjem i slanjem podataka pomoću dva signala(DRV\_IN - slanje, DRV\_OUT - primanje). Izlaz iz sklopa su dvije CAN linije, visoke i niske razine. Refleksije na kraju linije su spriječene dodavanjem otpornika iznosa 120 Ohma.
+
+\begin{table}[H]
+	\centering
+	\caption{Specifikacije sklopa za CAN komunikaciju: }
+	\label{tab:specifikacija_CAN_bus}
+	\begin{tabular}{|l|c|}
+		\hline
+		\textbf{Proizvođač} & Texas Instuments \\ \hline 
+		\textbf{Model} &  SN65HVD232D \\ \hline 
+		\textbf{Način montaže} & Surface Mount, SOIC \\ \hline 
+		\textbf{Broj pinova} & 8 \\ \hline 
+		\textbf{Minimalni napon napajanja} & 3 V \\ \hline 
+		\textbf{Maksimalni napon napajanja} & 3.6 V    \\ \hline
+	\end{tabular}
+\end{table}
 
 \subsection{Tiskana pločica - PCB}
+
+\subsubsection{Projektiranje tiskane pločice}
+Nakon izrade shema elektroničkog sklopovlja slijedi projektiranje tiskane pločice. Tiskana pločica je dvoslojna, a dimenzija je identična dimenziji osnovne ploče smještene na tijelu letjelice. Projektiranje tiskane pločice se obavlja također u Altium Designer CAD alatu. U nastavku slijedi kratki pregled procesa projektiranja tiskane pločice:
+
+\begin{center}
+	\begin{enumerate}
+		\item Definiranje oblika, veličine pločice i broja slojeva. Pločica je kvadratnog oblika, dimenzija 116mm x 116mm i sadrži 2 sloja bakra.
+		\item Raspored komponenata. Na gornjoj strani pločice smješteni su svi konektori, pogoni koračnih motora, regulatori napona, LED diode, mikrokontoler i kristalni oscilator. Preostale komponente nalaze se na doljnjem sloju pločice. Prilikom rapospoređivanja komponenata bitno je voditi računa o načinu spajanja svake komponente prema ostatku komponenata na sklopovlju. Na taj način se olakšava slijedeći korak, fizičko povezivanje komponenata bakrenim vodovima.
+		\item Povezivanje komponenata bakrenim vodovima. U ovom koraku bitno je ispravno definirati širinu pojedinih vodova, ovisno o očekivanom maksimalnom iznosu struje u vodiču. Širina bakrenih vodova prikazana je tablicom \ref{tab:specifikacija_pcb_with}.
+
+\begin{table}[H]
+	\centering
+	\caption{Specifikacije širina bakrenih vodova na tiskanoj pločici: }
+	\label{tab:specifikacija_pcb_with}
+	\begin{tabular}{|c|c|c|c|}
+			\hline 
+		  					& Min [mil] 	& Preporučeno [mil]	& Max [mil] \\ \hline  \hline
+		 Ulazno napajanje 	& 50 	& \textbf{100} 			& 200 \\ \hline
+		 Napajanje pogona koračnih motora 	& 100 	& \textbf{100} 			& 200 \\ \hline
+		 Faze koračnih motora 	& 100 	& \textbf{100} 			& 200 \\ \hline
+		 Napajanje Dynamixel motora 	& 25 	& \textbf{80} 			& 80 \\ \hline
+		 Regulirani napon 5V 	& 25 	& \textbf{25} 			& 50 \\ \hline
+		 Regulirani napon 3.3V 	& 10 	& \textbf{25} 			& 25 \\ \hline
+		 Signalni vodovi 	& 10 	& \textbf{25 }			& 25 \\ \hline
+	\end{tabular}
+\end{table}		
+
+		\item Povezivanje pinova mase, GND. OVDJE NAĆI PRIKLADAN PRIJEVOD NA HRVATSKI. POLYGON POUR, POUR OVER SAME NET.
+		\item Automatska programska kontrola rasporeda komponenata i vodova opcijom Altium Designer alata.
+	\end{enumerate}
+\end{center}
+
+
+\subsubsection{Izrada i montaža tiskane pločice}
+
 
 
 \end{document}
