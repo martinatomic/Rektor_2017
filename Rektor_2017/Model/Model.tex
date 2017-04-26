@@ -396,4 +396,155 @@ Pri opisu pozicije letjelice koriste se standardni Eulerovi kutevi. Za prelazak 
 
 \subsection{Linearizirani dinamički model letjelice}
 
+Svi sustavi koje susrećemo u praksi su nelinearni. Analiza i sinteza takvih sustava je vrlo složena, jer za razliku od linearnih sustava danas još ne postoji zaokružena teorija rješavanja nelinearnih diferencijalnih jednadžbi, koja bi davala opće rezultate za sve nelinearne sustave. Zbog toga su rješenja koja dobijemo za određeni nelinearni sustav svojstvena obično samo tom sustavu i ne mogu se proširiti na ostale nelinearne sustave. Međutim, nelinearni matematički model moguće je linearizirati ovisno o zadanom režimu rada. Linearizacijom nelinearnog sustava oko jednog ravnotežnog stanja dobiti će se linearni matematički model kojim će se dinamika nelinearnog sustava moći objasniti u okolini odabranog ravnotežnog stanja. \cite{vukic}
+
+\medskip
+
+Prethodno modelirani nelinearni dinamički model letjelice potrebno je stoga linearizirati u svrhu dobivanja prijenosne funkcije modela, koja opisuje stopu promjene kutne brzine gibanja letjelice s obzirom na promjenu pozicije pokretne mase. U nastavku je opisana analiza dinamike za \textit{kut poniranja}, ali s obzirom na simetričnost letjelice analogna analiza vrijedi i za \textit{kut valjanja}. 
+
+\medskip
+
+S obzirom da je linearizacija nelinearnih modela osjetljiv zadatak, potrebno je pomno odabrati početne uvjete, odnosno radnu točku oko koje će se obaviti linearizacija. Kao radna toča, odnosno početno stanje sustava letjelice, odabire se stanje u kojem letjelica lebdi na mjestu (\textit{hover condition}). To stanje podrazumijeva malu kutnu brzinu letjelice. Odabir ovog početnog stanja za posljedicu ima zanemarenje žiroskopskog, euler i centrifugalnog efekta koji se javljaju pri analizi pokretnog referentnog okvira. 
+
+\medskip
+
+Nadalje, podrazumijeva se kako servo sustav masa osigurava $PT_{2}S$ odziv dinamike pozicije mase na zadanu pobudu. Istu je dinamiku potrebno identificirati za potrebe projektiranja upravljanja, što je obrađeno u sljedećem poglavlju ovog rada. Opći izraz $OT_{2}S$ člana jednak je izrazu (\ref{eq:pt2s}) u nastavku, gdje $\omega_{mm}$ i $\zeta_{mm}$ predstavljaju nazivnu frekvenciju i prigušenje servo sustava, a $x_{i}$ poziciju $i$-te mase u lokalnom koordinatnom sustavu:
+\begin{equation}
+\frac{x_{i}}{x_{i, ref}}(s) = \frac{1}{\frac{1}{\omega_{mm}^{2}}s^{2} + \frac{2\zeta_{mm}}{\omega_{mm}}s + 1 }
+\label{eq:pt2s}
+\end{equation}
+
+Dinamikom $kuta \ poniranja \ \theta$ upravlja se isključivo pozicijama masa 1 i 3, jer one utječu na pomak centra mase letjelice u $x$ smjeru lokalnog koordinatnog sustava. U drugu ruku, dinamikom $kuta \ valjanja \ \varphi$ upravlja se masama 2 i 4, jer one utječu na pomak centra mase u $y$ smjeru lokalnog koordinatnog sustava. Njihove pozicije dane su izrazima (\ref{eq:r0i}) i (\ref{eq:r0j}), gdje $\frac{L}{2}$ označava početnu poziciju pokretne mase, $x_{1}$ i $x_{3}$ pomake masa 1 i 3 u $x$ smjeru, a $y_{2}$ i $y_{4}$ pomake masa 2 i 4 u $y$ smjeru. $z_{m}$ označava pomak svih masa u $z$ smjeru.
+\begin{equation}
+r_{0,i} = \left[
+\begin{matrix}
+\sin\left(\frac{\pi}{2}i\right)\frac{L}{2} + x_{i} & 0 & z_{m}
+\end{matrix} \right] ^{T}, i \in \{ 1, 3\}
+\label{eq:r0i}
+\end{equation}
+
+\begin{equation}
+r_{0,j} = \left[
+\begin{matrix}
+0 & -\cos\left(\frac{\pi}{2}j\right)\frac{L}{2} + y_{j} & z_{m}
+\end{matrix} \right] ^{T}, j \in \{ 2, 4\}
+\label{eq:r0j}
+\end{equation}
+
+ 
+Sljedeći izraz opisuje centar mase s obzirom na lokalni koordinatni sustav letjelice te nastaje uvrštavanjem izraza (\ref{eq:r0i}) i (\ref{eq:r0j}) u (\ref{eq:r0c}):
+\begin{equation}
+r_{0,c} = \mu \cdot \left[
+\begin{matrix}
+(x_{1} + x_{3}) & (y_{2} + y_{4}) & 4z_{m}
+\end{matrix} \right]^{T}
+\label{eq:r0c}
+\end{equation}
+
+gdje je $\mu = \frac{m}{M}$. Pozicija rotora u lokalnom koordinatnom sustavu opisana je s:
+\begin{equation}
+r_{0,rj} = \left[
+\begin{matrix}
+sin\left(\frac{\pi}{2}j\right)L & -\cos\left(\frac{\pi}{2}j\right)L & z_{r}
+\end{matrix} \right] ^{T}, j \in \{ 1, 2, 3, 4\}
+\label{eq:r0rj}
+\end{equation}
+
+gdje $z_{r}$ označava vertikalni odmak rotora od ishodišta koordinatnog sustava $L_{0}$. Koristeći izraze (\ref{eq:Mfj}),(\ref{eq:r0c}) i (\ref{eq:r0rj}) slijedi izraz koji opisuje momente proizvedene od strane sila rotora:
+\begin{equation}
+\sum_{j=1}^{4}M_{fj} = \left[
+\begin{matrix}
+(F_{r,2} - F_{r,4})L & (F_{r,3} - F_{r,1})L & L
+\end{matrix}\right]^{T} + \sum_{j=1}^{4}F_{r,j} 
+\left[\begin{matrix}
+-\mu(y_{2} + y_{4}) & \mu(x_{1} + x_{3}) & 0
+\end{matrix}\right]^{T}
+\label{eq:sumaMfj}
+\end{equation}
+
+gdje $F_{r,j}$ označava magnitudu sile $j$-tog rotora. 
+
+\medskip
+
+Proširenjem izraza (\ref{eq:dtM}) može se izlučiti izraz za kutnu brzinu u smjeru $y$ osi dobije se sljedeći izraz:
+\begin{equation}
+\begin{split}
+I_{yy}\dot{\omega}_{y}  & = \sum_{j=1}^{4}M_{fj}\cdot  \bm{\hat{j}} - (I_{xx} - I_{zz})\omega_{x}\omega_{z} \\
+&- 2m_{b}\mu^{2}(x_{1} + x_{3})(\dot{x}_{1} + \dot{x}_{3} )\omega_{y} \\
+&- 2m\frac{l}{2}(\dot{x}_{1} - \dot{x}_{3})\omega_{y} \\
+&- 2m(\dot{x}_{1}x_{1} + \dot{x}_{3}x_{3})(1-2\mu + 2\mu^{2})\omega_{y} \\
+&+ 4m(\dot{x}_{1}x_{3} + \dot{x}_{3}x_{1})\mu(1-\mu)\omega_{y} \\
+&+ m \omega_{z}(\dot{y}_{2} + \dot{y}_{4})z_{m}(1-4\mu) \\
+&+ m\omega_{x}\mu ((y_{2} + y_{4})(\dot{x}_{1} + \dot{x}_{3})-(\dot{y}_{2} + \dot{y}_{4})(x_{1} + x_{3})) \\
+&- m(\ddot{x}_{1} + \ddot{x}_{3})z_{m}(1 - 4\mu)
+\end{split}
+\label{eq:Iyyw}
+\end{equation}
+
+gdje su $I_{xx}$, $I_{yy}$ i $I_{zz}$ nominalni momenti inercije u $x$, $y$ i $z$ smjeru, te su proračunati za početne pozicije pomičnih masa, smještenih u centru kraka letjelice. Drugi dio izraza u (\ref{eq:Iyyw}) rezultat je žiroskopskog efekta, treći, četvrti, peti i šesti dio izraza proizlaze iz promjene momenta inercije, dok su sedmi i osmi dio izraza rezultat $\omega \times \sum_{i=1}^{4} = r_{c,i}\times L_{0,i}$ projeciranog na $y$ os, a deveti dio izraza jednak je $y$ komponenti od $\sum_{i=1}^{4}r_{c,i}\times \dot{L}_{0,i}$.  
+
+\medskip
+
+Krajnji cilj dobivanja prijenosne funkcije sustava svodi se na dizajniranje upravljanja za jedan takav sustav, stoga se u model uvodi upravljački signal $u$. S obzirom da prikazujemo dinamiku \textit{kuta poniranja}, taj je upravljački signal jednak referentnim vrijednostima za poziciju masa 1 i 3:
+
+\begin{equation}
+ u_{\theta} = x_{1, ref} = x_{3, ref}
+ \label{eq:u}
+ \end{equation} 
+
+Konačno, prijenosna funkcija slijedi iz (\ref{eq:pt2s}), (\ref{eq:u}), (\ref{eq:sumaMfj}) te drugog i devetog dijela izraza (\ref{eq:Iyyw}) (jer iz njih proizlazi dominantan dinamika kuta valjanja u početnom stanju lebdjenja):
+
+\begin{equation}
+\boxed{
+\frac{\omega_{y}(s)}{u_{\theta}(s)} = \frac{2mg - 2m(1-4\mu)z_{m}s^{2}}{I_{yy}s \left(\frac{1}{\omega^{2}}_{mm}s^{2} + \frac{2\zeta_{mm}}{\omega_{mm}}s + 1  \right)}
+}
+\label{eq:tf}
+\end{equation}
+
+uz pretpostavku da je potisak jednog rotora u stanju lebdjenja jednak $F_{r,j}|_{0} = \frac{M_{g}}{4}$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
