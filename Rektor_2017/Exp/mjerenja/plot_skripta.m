@@ -68,20 +68,28 @@ rot_rate_mv(:,1) = rot_rate_mv(:,1)/1e9;
 rot_rate_ref(:,1) = rot_rate_ref(:,1)-ones(length(rot_rate_ref(:,1)),1)*rot_rate_ref(1,1);
 rot_rate_ref(:,1) = rot_rate_ref(:,1)/1e9;
 
+%index da se plota samo prvo paljenje rotora (idx_ = end ako hoces sve)
+idxr = find(rot_ang_ref(:,1)>=80,1,'first');
+idxm = find(rot_ang_mv(:,1)>=80,1,'first');
+
 %sad plotaj
 figure
-plot(rot_ang_ref(:,1),rot_ang_ref(:,2));
+plot(rot_ang_ref(1:idxr,1),rot_ang_ref(1:idxr,2));
 hold on; grid on;
-plot(rot_ang_mv(:,1),rot_ang_mv(:,2));
+plot(rot_ang_mv(1:idxm,1),rot_ang_mv(1:idxm,2));
 axis tight 
 legend('Referenca','Mjerenje');
 xlabel('t [s]');
 ylabel('\theta [rad]');
 
+%index za kraj plota
+idxr = find(rot_rate_ref(:,1)>=80,1,'first');
+idxm = find(rot_rate_mv(:,1)>=80,1,'first');
+
 figure
-plot(rot_rate_ref(:,1),rot_rate_ref(:,2));
+plot(rot_rate_ref(1:idxr,1),rot_rate_ref(1:idxr,2));
 hold on; grid on;
-plot(rot_rate_mv(:,1),rot_rate_mv(:,2));
+plot(rot_rate_mv(1:idxm,1),rot_rate_mv(1:idxm,2));
 axis tight 
 legend('Referenca','Mjerenje');
 xlabel('t [s]');
