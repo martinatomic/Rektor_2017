@@ -163,19 +163,19 @@
 \usepackage{lscape}
 \begin{document}
 
-U sklopu ovog poglavlja izveden je nelinearni matematički model letjelice koji opisuje njezinu rotaciju i translaciju. Na temelju tog modela obavlja se njegova linearizacija u svrhu dobivanja prijenosne funkcije sustava koja se potom koristi za upravljanje. Potpuni model nalazi se u literaturi \cite{haus3}.
+U sklopu ovog poglavlja dan je pregled nelinearnog matematičkog modela letjelice koji opisuje njezinu rotaciju i translaciju. Na temelju tog modela obavlja se njegova linearizacija u svrhu dobivanja prijenosne funkcije sustava koja se potom koristi za upravljanje. Potpuni model nalazi se u literaturi \cite{haus3}.
 
 \medskip
 
 \subsection{Nelinearni dinamički model letjelice s pokretnim masama}
 
-Koordinatni sustav letjelice prikazan je slikom \ref{fig:mod}. Svi vektori korišteni za opis ovog sustava, uz iznimku sile gravitacije, izraženi su u lokalnom mobilnom koordinatnom sustavu letjelice označenom s $L_{0}$. Vektor sile gravitacije prikladno je izražen u globalnom nepomičnom koordinatnom sustavu $L_{I}$. $L_{CoG}$ označava koordinatni sustav vezan za centar mase letjelice te je on usklađen s $L_{0}$ koordinatnim sustavom.
+Koordinatni sustav letjelice prikazan je Slikom \ref{fig:mod}. Svi vektori korišteni za opis ovog sustava, uz iznimku sile gravitacije, izraženi su u lokalnom mobilnom koordinatnom sustavu letjelice označenom s $L_{0}$. Vektor sile gravitacije prikladno je izražen u globalnom nepomičnom koordinatnom sustavu $L_{I}$. $L_{CoG}$ označava koordinatni sustav vezan za centar mase letjelice te je on usklađen s $L_{0}$ koordinatnim sustavom.
 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.23]{model}
-	\caption{Koordinatni sustav letjelice \cite{haus1}}
+	\caption{Koordinatni sustav letjelice}
 	\label{fig:mod}
 \end{figure}
 
@@ -256,15 +256,13 @@ f_{i2} = -m_{i}\cdot g \bm{\hat{K}}
 \end{equation}
 gdje je  $\bm{\hat{K}}$ jedinični vektor u $L_{I}$ koordinatnom sustavu koji pokazuje u $z$ smjeru, dok je $g$ gravitacijska konstanta. 
 
-\item Vučna sila modelirana tako da bude proporcionalna brzini pokretne mase
+\item Sila trenja modelirana je tako da bude proporcionalna brzini pokretne mase
 \begin{equation}
 f_{i3} = -c_{d} \cdot v_{0,i}
 \label{eq:fi3}
 \end{equation}
 
-gdje je $c_{d}$ vučni koeficijent.
-
-VUCNA SILA ILI SILA ZANOSENJA ??????
+gdje je $c_{d}$ koeficijent trenja.
 
 \end{enumerate}
 
@@ -362,17 +360,15 @@ gdje je s $I_{i}$ označen moment inercije $i$-tog dijela. Sljedeći izraz kori�
 
 Vanjski momenti koji djeluju na sustav letjelice te koji se sljedeći modeliraju su:
 \begin{enumerate}
-\item Moment koji stvaraju sile rotora na neki radijus iz centra mase
+\item Moment koji stvaraju sile rotora na kraku
 \begin{equation}
-M_{fj} = r_{d,rj} \times F_{rj} = (r_{c,0} + r_{0,rj}) \times F_{rj}
+M_{fj} = r_{c,rj} \times F_{rj} = (r_{c,0} + r_{0,rj}) \times F_{rj}
 \label{eq:Mfj}
 \end{equation}
 
 gdje je s $r_{0,rj}$ označen vektor koji se proteže od ishodišta letjelice do $j$-tog rotora.
 
-\item Momenti rotora uzrokovani induciranim zanošenjem:
-
-ZANOSENJEM, POVLACENJEM??
+\item Momenti rotora uzrokovani induciranim trenjem:
 
 \begin{equation}
 M_{dj} = \zeta_{j}b_{m}b_{f}\Omega_{j}^{2} \bm{\hat{k}}
@@ -396,7 +392,7 @@ Pri opisu pozicije letjelice koriste se standardni Eulerovi kutevi. Za prelazak 
 
 \subsection{Linearizirani dinamički model letjelice}
 
-Svi sustavi koje susrećemo u praksi su nelinearni. Analiza i sinteza takvih sustava je vrlo složena, jer za razliku od linearnih sustava danas još ne postoji zaokružena teorija rješavanja nelinearnih diferencijalnih jednadžbi, koja bi davala opće rezultate za sve nelinearne sustave. Zbog toga su rješenja koja dobijemo za određeni nelinearni sustav svojstvena obično samo tom sustavu i ne mogu se proširiti na ostale nelinearne sustave. Međutim, nelinearni matematički model moguće je linearizirati ovisno o zadanom režimu rada. Linearizacijom nelinearnog sustava oko jednog ravnotežnog stanja dobiti će se linearni matematički model kojim će se dinamika nelinearnog sustava moći objasniti u okolini odabranog ravnotežnog stanja. \cite{vukic}
+Svi sustavi koje susrećemo u praksi su nelinearni. Analiza i sinteza takvih sustava je vrlo složena, jer za razliku od linearnih sustava danas još ne postoji zaokružena teorija rješavanja nelinearnih diferencijalnih jednadžbi, koja bi davala opće rezultate za sve nelinearne sustave. Zbog toga su rješenja koja dobijemo za određeni nelinearni sustav svojstvena obično samo tom sustavu i ne mogu se proširiti na ostale nelinearne sustave. Međutim, nelinearni matematički model moguće je linearizirati ovisno o zadanom režimu rada. Linearizacijom nelinearnog sustava oko jednog ravnotežnog stanja dobiti će se linearni matematički model kojim će se dinamika nelinearnog sustava moći objasniti u okolini odabranog ravnotežnog stanja \cite{vukic}.
 
 \medskip
 
@@ -404,17 +400,17 @@ Prethodno modelirani nelinearni dinamički model letjelice potrebno je stoga lin
 
 \medskip
 
-S obzirom da je linearizacija nelinearnih modela osjetljiv zadatak, potrebno je pomno odabrati početne uvjete, odnosno radnu točku oko koje će se obaviti linearizacija. Kao radna toča, odnosno početno stanje sustava letjelice, odabire se stanje u kojem letjelica lebdi na mjestu (\textit{hover condition}). To stanje podrazumijeva malu kutnu brzinu letjelice. Odabir ovog početnog stanja za posljedicu ima zanemarenje žiroskopskog, euler i centrifugalnog efekta koji se javljaju pri analizi pokretnog referentnog okvira. 
+S obzirom da je linearizacija nelinearnih modela osjetljiv zadatak, potrebno je pomno odabrati početne uvjete, odnosno radnu točku oko koje će se obaviti linearizacija. Kao radna toča, odnosno početno stanje sustava letjelice, odabire se stanje u kojem letjelica lebdi na mjestu (\textit{hover condition}). To stanje podrazumijeva malu kutnu brzinu letjelice. Odabir ovog početnog stanja za posljedicu ima zanemarenje žiroskopskog i centrifugalnog efekta koji se javljaju pri analizi pokretnog referentnog okvira. 
 
 \medskip
 
-Nadalje, podrazumijeva se kako servo sustav masa osigurava $PT_{2}S$ odziv dinamike pozicije mase na zadanu pobudu. Istu je dinamiku potrebno identificirati za potrebe projektiranja upravljanja, što je obrađeno u sljedećem poglavlju ovog rada. Opći izraz $OT_{2}S$ člana jednak je izrazu (\ref{eq:pt2s}) u nastavku, gdje $\omega_{mm}$ i $\zeta_{mm}$ predstavljaju nazivnu frekvenciju i prigušenje servo sustava, a $x_{i}$ poziciju $i$-te mase u lokalnom koordinatnom sustavu:
+Nadalje, podrazumijeva se kako klizni mehanizam pokretnih masa osigurava $PT_{2}S$ odziv dinamike pozicije mase na zadanu pobudu. Istu je dinamiku potrebno identificirati za potrebe projektiranja upravljanja, što je obrađeno u sljedećem poglavlju ovog rada. Opći izraz $PT_{2}S$ člana jednak je izrazu (\ref{eq:pt2s}) u nastavku, gdje $\omega_{mm}$ i $\zeta_{mm}$ predstavljaju nazivnu frekvenciju i prigušenje sustava, a $x_{i}$ poziciju $i$-te mase u lokalnom koordinatnom sustavu:
 \begin{equation}
 \frac{x_{i}}{x_{i, ref}}(s) = \frac{1}{\frac{1}{\omega_{mm}^{2}}s^{2} + \frac{2\zeta_{mm}}{\omega_{mm}}s + 1 }
 \label{eq:pt2s}
 \end{equation}
 
-Dinamikom $kuta \ poniranja \ \theta$ upravlja se isključivo pozicijama masa 1 i 3, jer one utječu na pomak centra mase letjelice u $x$ smjeru lokalnog koordinatnog sustava. U drugu ruku, dinamikom $kuta \ valjanja \ \varphi$ upravlja se masama 2 i 4, jer one utječu na pomak centra mase u $y$ smjeru lokalnog koordinatnog sustava. Njihove pozicije dane su izrazima (\ref{eq:r0i}) i (\ref{eq:r0j}), gdje $\frac{L}{2}$ označava početnu poziciju pokretne mase, $x_{1}$ i $x_{3}$ pomake masa 1 i 3 u $x$ smjeru, a $y_{2}$ i $y_{4}$ pomake masa 2 i 4 u $y$ smjeru. $z_{m}$ označava pomak svih masa u $z$ smjeru.
+Dinamikom $kuta \ poniranja \ \theta$ upravlja se isključivo pozicijama masa 1 i 3, jer one utječu na pomak centra mase letjelice u $x$ smjeru lokalnog koordinatnog sustava. U drugu ruku, dinamikom $kuta \ valjanja \ \varphi$ upravlja se masama 2 i 4, jer one utječu na pomak centra mase u $y$ smjeru lokalnog koordinatnog sustava. Njihove pozicije dane su izrazima (\ref{eq:r0i}) i (\ref{eq:r0j}), gdje $\frac{L}{2}$ označava početnu poziciju pokretne mase, $x_{1}$ i $x_{3}$ pomake masa 1 i 3 u $x$ smjeru, a $y_{2}$ i $y_{4}$ pomake masa 2 i 4 u $y$ smjeru. $z_{m}$ označava konstantni pomak svih masa u $z$ smjeru.
 \begin{equation}
 r_{0,i} = \left[
 \begin{matrix}
@@ -492,58 +488,16 @@ Krajnji cilj dobivanja prijenosne funkcije sustava svodi se na dizajniranje upra
  \label{eq:u}
  \end{equation} 
 
-Konačno, prijenosna funkcija slijedi iz (\ref{eq:pt2s}), (\ref{eq:u}), (\ref{eq:sumaMfj}) te drugog i devetog dijela izraza (\ref{eq:Iyyw}) (jer iz njih proizlazi dominantan dinamika kuta valjanja u početnom stanju lebdjenja):
+Konačno, prijenosna funkcija slijedi iz (\ref{eq:pt2s}), (\ref{eq:u}), (\ref{eq:sumaMfj}) te drugog i devetog dijela izraza (\ref{eq:Iyyw}) (jer iz njih proizlazi dominantan dinamika kuta valjanja u početnom stanju lebdjenja) \cite{haus2} \cite{haus3}:
 
 \begin{equation}
 \boxed{
-\frac{\omega_{y}(s)}{u_{\theta}(s)} = \frac{2mg - 2m(1-4\mu)z_{m}s^{2}}{I_{yy}s \left(\frac{1}{\omega^{2}}_{mm}s^{2} + \frac{2\zeta_{mm}}{\omega_{mm}}s + 1  \right)}
+\frac{\omega_{y}(s)}{u_{\theta}(s)} = \frac{2mg - 2m(1-4\mu)z_{m}s^{2}}{I_{yy}s \left(\frac{1}{\omega_{mm}^{2}}s^{2} + \frac{2\zeta_{mm}}{\omega_{mm}}s + 1  \right)}
 }
 \label{eq:tf}
 \end{equation}
 
 uz pretpostavku da je potisak jednog rotora u stanju lebdjenja jednak $F_{r,j}|_{0} = \frac{M_{g}}{4}$.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
