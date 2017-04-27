@@ -149,7 +149,7 @@
 \usepackage{tocloft}
 \usepackage{import}
 \usepackage{standalone}
-\graphicspath{{Uvod/}, {Ciljevi/}, {Materijal/}, {Rasprava/}, {Rezultati/}} 
+\graphicspath{{Koncept/figures/}} 
 
 \hypersetup{
   colorlinks   = true, %Colours links instead of ugly boxes
@@ -167,16 +167,20 @@ Kao što je spomenuto u uvodu ovog rada, cilj je dizajnirati i razviti laborator
 
 \medskip
 
-Promjena centra mase letjelice postiže se promjenom pozicije pomičnih masa smještenih na krakove letjelice. Ta promjena uzrokuje nastanak momenata kuteva  valjanja (\textit{roll}) i poniranja (\textit{pitch}), što zauzvrat služi za kontrolu pozicije letjelice. Grafički prikaz uzroka i posljedice ovog koncepta upravljanja prikazan je slikom \ref{kontrol}. Kako bi upravljanje bilo linearno nezavisno, multirotorska letjelica mora biti konstruirana u standardnoj \textit{plus konfiguraciji}. \cite{haus1}
-
-\bigskip
-DODATI SLIKU KAKO SE KVAD NAGNE KAD SE POMAKNE MASA
-
-Bitno je naglasiti kako se za upravljanje visine letjelice te kuta njezinog zakreta i dalje koristi klasična metoda upravljanja, ona zasnovana na promjeni brzine vrtnje propelera. U nastavku ovog rada glavni će fokus biti na novom konceptu upravljanja. 
+Promjena centra mase letjelice postiže se promjenom pozicije pomičnih masa smještenih na krakove letjelice. Ta promjena uzrokuje nastanak momenata kuteva  valjanja (\textit{roll}) i poniranja (\textit{pitch}), što zauzvrat služi za kontrolu pozicije letjelice. Grafički prikaz uzroka i posljedice ovog koncepta upravljanja prikazan je Slikom \ref{fig:kontrol}. Kako bi upravljanje kutevima valjanja i poniranja bilo raspregnuto, multirotorska letjelica mora biti konstruirana u standardnoj \textit{plus konfiguraciji}. \cite{haus1}
 
 \bigskip
 
-DODATI SLIKU UPRAVLJANJA MASA PLUS PROPELER
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{roll_koncept}
+	\caption{Utjecaj pomaka pokretne mase na položaj letjelice}
+	\label{fig:kontrol}
+\end{figure}
+
+
+Bitno je naglasiti kako se za upravljanje visine letjelice te kuta njezinog zakreta i dalje koristi klasična metoda upravljanja, ona zasnovana na promjeni brzine vrtnje propelera. Dinamika letjelice po visini i zakretanju je sporije od dinamike valjanja i poniranja te se očekuje kako će benzinski motori s time moći upravljati. U nastavku ovog rada glavni će fokus biti na novom konceptu upravljanja kutevima poniranja i valjanja multirotorske letjelice. 
+
 
 \end{document}
 
