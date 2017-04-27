@@ -162,10 +162,10 @@
 \usepackage{lscape}
 \begin{document}
 	
-U sklopu razvoja letjelice razvijena je potrebna programska podrška. Zbog specifičnosti ovakvog pristupa upravljanju multirotorskim letjelicama postojeća programska rješenja ne zadovoljavaju specifične zahtjeve ovakvog načina upravljanja. Stoga je razvijeno vlastito programsko rješenje za predstavljeni problem. Zbog specifične sklopovske arhitekture letjelice, razvijena je programska potpora za dva različita sustava: kontroler koračnih motora i Pixhawk kontroler leta. U nastavku je dan detaljniji pregled programskih rješenja za  obje platforme. 
+U sklopu razvoja letjelice razvijena je potrebna programska podrška. Zbog specifičnosti ovakvog pristupa upravljanju multirotorskim letjelicama postojeća programska rješenja ne zadovoljavaju specifične zahtjeve ovakvog načina upravljanja. Stoga je razvijeno vlastito programsko rješenje za predstavljeni problem. Zbog specifične sklopovske arhitekture letjelice, razvijena je programska potpora za dva različita sustava: upravljačku pločicu koračnih motora i Pixhawk kontroler leta. U nastavku je dan detaljniji pregled programskih rješenja za  obje platforme. 
 
 
-\subsection{Programska podrška za kontroler koračnih motora}
+\subsection{Programska podrška za upravljačku pločicu koračnih motora}
 
 Sklopovljem za pogon koračnih motora upravlja 32-bitni mikrokontroler STM32F4 familije (ARM M4 arhitekture). Zadaća upravljačkog sustava ove razine je
 slijeđenje proslijeđene reference pozicije pomičnih masa na kraku letjelice. Upravljački algoritam na mikrokontroleru generira impulsne signale i potrebne logičke signale koji se prosljeđuju na upravljačko sklopovlje koračnih motora. \newline
@@ -174,7 +174,7 @@ slijeđenje proslijeđene reference pozicije pomičnih masa na kraku letjelice. 
 Gibanje motora definirano je profilom brzine. Stoga je zadaća upravljačkog algoritam stvaranje impulsa u točnim vremenskim razmacima kako bi se osiguralo slijeđenje zadanog profila brzine, a time i pravilno gibanje motora.
 
 Na Slici \ref{fig:sm_stepper} ilustriran je automat stanja kojim se ostvaruje željena dinamika koračnih motora. Kako je brzina motora proporcionalna 
-frekvenciji impulsnog signala STP, variranjem frekvencije impulsa ostvaruje se promjena brzine vrtnje motora. Nakon primjene reference položaja podiže se frekvencija impulsa te motor ubrzava do maksimalne brzine gdje je frekvencija impulsa konstantna. Približavanjem referentnom položaju usporava se frekvencija impulsa, a time i motor. \newline
+frekvenciji impulsnog signala koraka STP (Slika \ref{fig:sm_stepper}), variranjem frekvencije impulsa ostvaruje se promjena brzine vrtnje motora. Nakon primjene reference položaja podiže se frekvencija impulsa te motor ubrzava do maksimalne brzine gdje je frekvencija impulsa konstantna. Približavanjem referentnom položaju usporava se frekvencija impulsa, a time i motor. \newline
 Kontrola vremenskog razmaka impulsa ostvarena je korištenjem vremenskog sklopa mikrokontrolera (eng. \textit{timer}) TIM4. Iz potrebne brzine motora računa se vremenski razmak između impulsa signala STP izražen u broju otkucaja takta vremenskog sklopa. Istekom vremenskog intervala vremenski sklop postavlja zahtjev za prekid čime se pokreće prekidna rutina. U prekidnoj rutini mijenja se stanje impulsnog signala i postavlja se odgovarajuća vrijednost signala DIR koji određuje smjer rotacije motora, a time i smjer gibanja mase na kraku letjelice. Nakon postavljanja vrijednosti logičkih signala, postavlja se novi vremenski razmak nakon kojeg ponovo dolazi do zahtjeva za prekid i ponavljanja iste rutine.
 
 \begin{center}
@@ -184,7 +184,7 @@ Kontrola vremenskog razmaka impulsa ostvarena je korištenjem vremenskog sklopa 
 	\label{fig:sm_stepper}
 \end{center}
 
-\subsubsection{Ostale komponente programske podrške kontrolera koračnih motora}
+\subsubsection{Ostale komponente programske podrške upravljačke pločice koračnih motora}
 Pored automata stanja za generiranje impulsnog signala koraka, programski kod sadrži sljedeće module:
 \begin{itemize}
 	\item modul serijske komunikacije,
@@ -192,18 +192,18 @@ Pored automata stanja za generiranje impulsnog signala koraka, programski kod sa
 	\item modul za upravljanje vremenskim sklopovljem mikrokontrolera,
 	\item modul za upravljanje ulazno/izlaznim sklopovljem mikrokontrolera.
 \end{itemize}
-Zbog potrebe istovremenog upravljanja četiri koračna motora, u izradi upravljačkog programa iskorišten je \textit{real-time} operacijski sustav otvorenog koda \textit{FreeRTOS}\textsuperscript{TM}. Korištenje operacijskog sustava olakšalo je implementaciju paralelnog izvođenja upravljačkog algoritma motora. Na slici \ref{fig:scu_software} prikazana je struktura i interakcija programskih modula u sustavu. U modulima naziva MOTORn\_TASK
+Zbog potrebe istovremenog upravljanja četiri koračna motora, u izradi upravljačkog programa iskorišten je \textit{real-time} operacijski sustav otvorenog koda \textit{FreeRTOS}\textsuperscript{TM}. Korištenje operacijskog sustava olakšalo je implementaciju paralelnog izvođenja upravljačkog algoritma motora. Na Slici \ref{fig:scu_software} prikazana je struktura i interakcija programskih modula u sustavu. U modulima naziva MOTORn\_TASK
 ostvaren je upravljački algoritam motora, modulom MSG\_DECODE\_TASK dekodira se komunikacijski paket primljen putem serijske veze, a modulom TIM4\_IRQHandler upravlja se stanjima izlaznih logičkih signala i vremenskim sklopom mikrokontrolera. Programski moduli napravljeni su kao samostalne
-cjeline, a sa ostalim modula komuniciraju korištenjem redova poruka (eng. \textit{message queues}). Cjeloviti programski kod je javno dostupan na GitHub servisu \cite{github}.
+cjeline, a sa ostalim modulima komuniciraju korištenjem redova poruka (eng. \textit{message queues}). Cjeloviti programski kod je javno dostupan na GitHub servisu \cite{github}.
 \begin{center}
 	\centering
 	\includegraphics[width=1\textwidth]{{data_flow_diagram}.PNG}
-	\captionof{figure}{Prikaz modula i tokova podataka u programskoj podršci kontrolera koračnih motora}
+	\captionof{figure}{Prikaz modula i tokova podataka u programskoj podršci upravljačke pločice koračnih motora}
 	\label{fig:scu_software}
 \end{center}
 
 \subsection{Programska podrška za Pixhawk kontroler leta}
-Pixhawk kontroler leta je komercijalno dostupan sklop koji u paketu dolazi s vlastitim programskim kodom. Programski kod Pixhawk kontrolera (\textit{PX4 firmware}) prilagođen je sklopovskoj platformi na kojoj se nalazi i omogućuje upravljanje velikim brojem letjelica različitih konfiguracija. Iako podržava velik broj konfiguracija letjelica, PX4 ne pruža gotovo rješenje za specifičan način upravljanja prikazan u ovom radu. PX4 je programsko rješenje otvorenog koda i dozvoljeno je raditi modifikacije programskog koda prema BSD licenci. PX4 programska platforma je modularna te nije potrebno razvijati cjelokupnu programsku potporu već samo module specifične za upravljanje zasnovano na pomičnim masama. Kod razvoja programske podrške, osim modula PX4 platforme, korišteni su i moduli za kontrolu položaja letjelice razvijeni u Laboratoriju za robotiku i inteligentne sustave upravljanja (LARICS). Dodatno je razvijen programski modul za serijsku komunikaciju kojim se ostvaruje sučelje prema upravljačkoj jedinici za kontrolu koračnih motora. Očitane vrijednosti izlaza upravljačkih algoritama rotacije letjelice oko osi valjanja i poniranja i odgovarajućih izlaza upravljačke petlje brzina rotacije oko istih osi prevode se u naredbe zakreta koračnog motora te se pakiraju u odgovarajuću strukturu podataka. Strukture podataka šalju se serijskom vezom prema kontroleru koračnih motora. Ilustracija interakcije programskih modula sustava upravljanja prikazana je na slici \ref{fig:shema_modula}.
+Pixhawk kontroler leta je komercijalno dostupan sklop koji u paketu dolazi s vlastitim programskim kodom. Programski kod Pixhawk kontrolera (\textit{PX4 firmware}) prilagođen je sklopovskoj platformi na kojoj se nalazi i omogućuje upravljanje velikim brojem letjelica različitih konfiguracija. Iako podržava velik broj konfiguracija letjelica, PX4 ne pruža gotovo rješenje za specifičan način upravljanja prikazan u ovom radu. PX4 je programsko rješenje otvorenog koda i dozvoljeno je raditi modifikacije programskog koda prema BSD licenci. PX4 programska platforma je modularna te nije potrebno razvijati cjelokupnu programsku potporu već samo module specifične za upravljanje zasnovano na pomičnim masama. Kod razvoja programske podrške, osim modula PX4 platforme, korišteni su i moduli za kontrolu položaja letjelice razvijeni u Laboratoriju za robotiku i inteligentne sustave upravljanja (LARICS). Dodatno je razvijen programski modul za serijsku komunikaciju kojim se ostvaruje sučelje prema upravljačkoj jedinici za kontrolu koračnih motora. Očitane vrijednosti izlaza upravljačkih algoritama rotacije letjelice oko osi valjanja i poniranja i odgovarajućih izlaza upravljačke petlje brzina rotacije oko istih osi prevode se u naredbe zakreta koračnog motora te se pakiraju u odgovarajuću strukturu podataka. Strukture podataka šalju se serijskom vezom prema upravljačkoj pločici koračnih motora. Ilustracija interakcije programskih modula sustava upravljanja prikazana je na Slici \ref{fig:shema_modula}.
 \begin{center}
 	\centering
 	\includegraphics[width=1\textwidth]{{shema_modula}.PNG}
