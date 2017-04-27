@@ -162,19 +162,21 @@
 \usepackage{lscape}
 \begin{document}
 
-U ovom radu predstavljeno je projektiranje i izrada laboratorijskog modela letjelice upravljane novim konceptom upravljanja predstavljenim u \cite{haus1}. Potreba za novim konceptom upravljanja proizlazi iz zahtjeva koji su postavljeni projektom MORUS, čiji je osnovni cilj izrada autonomnog sustava za maritimnu sigurnost i nadzor stanja okoliša. Autonomni sustav kojeg čine autonomno podvodno vozilo (AUV) i autonomno zračno vozilo (UAV), ima za zadatak koordiniranim radom obaviti razne podvodne inspekcije u okruženjima opasnima za čovjeka, prilikom havarija i sl. Predloženo rješenje letjelice bazirano je na primjeni benzinskih motora, dok je upravljanje zasnovano na promjeni centra mase letjelice, pomičnim masama na krakovima letjelice. 
+U ovom radu predstavljeno je projektiranje i izrada laboratorijskog modela letjelice upravljane novim konceptrom upravljanja predstavljenim u \cite{haus1}. Dio projekta MORUS je izrada multirotorske letjelice velike nosivosti pogonjene benzinskim motorima i upravljane promjenom centra mase pomičnim masama na krakovima letjelice.
+Kako bi se olakšao proces razvoja MORUS letjelice, ukazana je potreba za manjim laboratorijskim modelom multirotorske letjelice s upravljanjem zasnovanim na pomičnim masama. Modifikacijom postojeće laboratorijske letjelice \textit{ArduCopter},
+izrađen je manji model multirotorske letjelice pogonjene beskolektorskim istosmjernim električnim motorima i upravljane promjenom centra mase.
 
 
 \medskip
-U radu je predstavljen matematički model letjelice koji je osnova projektiranja sustava upravljanja. Linearizacijom matematičkog modela letjelice oko radne točke uslijedila je prijenosna funkcija sustava, koja je početni korak projektiranja sustava upravljanja. Parametri prijenosne funckije sustava identificirani su eksperimentalno, uzastopnim mjerenjima. Nakon identifikacije sustava, uslijedilo je projektiranje sustava upravljanja, a jedna od korištenih metoda je krivulja mjesta korijena, predstavljeno člankom \cite{haus2}.
+U radu je predstavljen matematički model letjelice koji je osnova projektiranja sustava upravljanja. Linearizacijom matematičkog modela letjelice oko radne točke ostvarena je prijenosna funkcija sustava, koja je početni korak projektiranja sustava upravljanja. Parametri prijenosne funkcije sustava identificirani su eksperimentalno. Nakon identifikacije sustava, uslijedilo je projektiranje sustava upravljanja, a jedna od korištenih metoda je krivulja mjesta korijena, predstavljena člankom \cite{haus2}.
 
 \medskip
 
-Nadalje, postojeća letjelica \textit{ArduCopter} modificirana je dodavanjem kliznih mehanizama za pokretne mase. Sve mehaničke modifikacije projektirane su u CAD alatu te nakon toga izrađene i montirane na letjelicu. Važan dio modifikacije letjelice odnosi se i na projektiranje elektroničkog sklopovlja i pripadne programske potpore, čija je osnovna zadaća upravljanje radom koračnih motora. Dodatno, uz upravljanje koračnim motorima, elektroničko sklopovlje je prošireno standardnim komunikacijskim i aktuatorskim sučeljima, zbog daljnjih proširenja i korištenja. Programska potpora projektirana je za mikrokontroler \textit{STM32} serije F4, a pravovremeno izvršavanje zadataka osigurano je primjenom operativnog sustava za rad u stvarnom vremenu \textit{FreeRTOS}.
+Nadalje, postojeća letjelica \textit{ArduCopter} modificirana je dodavanjem kliznih mehanizama za pokretne mase. Sve mehaničke modifikacije projektirane su u CAD alatu te nakon toga izrađene i montirane na letjelicu. Modifikacije letjelice odnose se i na projektiranje elektroničkog sklopovlja i pripadne programske potpore, čija je osnovna zadaća upravljanje radom koračnih motora. Dodatno, uz upravljanje koračnim motorima, elektroničko sklopovlje je prošireno standardnim komunikacijskim i aktuatorskim sučeljima čime je omogućeno naknadno nadograđivanje letjelice. Programska potpora projektirana je za mikrokontroler \textit{STM32} serije F4, a pravovremeno izvršavanje zadataka osigurano je primjenom operativnog sustava za rad u stvarnom vremenu \textit{FreeRTOS}.
 
 
 \medskip
-Rezultat ovog rada je funkcionalna zračna platforma za testiranje i verificiranje novog koncepta upravljanja multirotorskom letjelicom. Eksperimentalni rezultati su potvrdili isravnost novog koncepta upravljanja letjelicom. Modificirana letjelica \textit{ArduCopter} postaje platforma za sve buduće algoritme upravljanja, uključujući planiranje i izvođenje trajektorija, manipulaciju objektima i sl.
+Rezultat ovog rada je funkcionalna zračna platforma za testiranje i verificiranje novog koncepta upravljanja multirotorskom letjelicom. Eksperimentalni rezultati su potvrdili ispravnost novog koncepta upravljanja letjelicom. Modificirana letjelica \textit{ArduCopter} postaje platforma za sve buduće algoritme upravljanja, uključujući planiranje i izvođenje trajektorija, manipulaciju objektima i sl.
 
 
 \end{document}
