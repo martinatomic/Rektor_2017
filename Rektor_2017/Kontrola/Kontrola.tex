@@ -182,7 +182,7 @@ Modeliran je koncept i odabrana je upravljačka struktura, stoga još preostaje 
 
 \medskip
 
-Određivanje parametara regulatora obavlja se u dva koraka. Prvo se određuje pojačanje unutarnje petlje prema izrazu za prijenosnu funkciju otvorenog kruga sustava (\ref{eq:tf}) koristeći postupak \textit{krivulje mjesta korijena}. Zatim se određuje prijenosna funkcija zatvorenog kruga unutarnje petlje s prijenosnom funkcijom P regulatora ($K_{p}$) te s prijenosnom funkcijom procesa. Prijenosna funkcija zatvorenog  kruga unutarnje petlje jednaka je prijednosnoj funkciji otvorenog kruga vanjske petlje. Za tu se prijenosnu funkciju postupak ponavlja.  
+Određivanje parametara regulatora obavlja se u dva koraka. Prvo se određuje pojačanje unutarnje petlje prema izrazu za prijenosnu funkciju otvorenog kruga sustava (\ref{eq:tf}) koristeći postupak \textit{krivulje mjesta korijena}. Zatim se određuje prijenosna funkcija zatvorenog kruga unutarnje petlje s prijenosnom funkcijom P regulatora ($K_{p}$) te s prijenosnom funkcijom procesa. Prijenosna funkcija zatvorenog kruga uz dodan integrator jednaka je prijenosnoj funkciji otvorenog kruga vanjske petlje. Za tu se prijenosnu funkciju postupak ponavlja.  
 
 \medskip
 
@@ -190,7 +190,7 @@ Za određivanje \textit{krivulje mjesta korijena} unutarnje petlje koristi se pr
 
  \begin{equation}
  \boxed{
- K_{p,in} = 0.111
+ K_{p,in} = 0.1
  } \ .
  \label{eq:Kp_in}
  \end{equation}
@@ -213,14 +213,14 @@ Stabilnost zatvorenog kruga unutarnje petlje može se ispitati odzivom prijenosn
 \end{figure}
 
 
-Analogan postupak primjenjuje se i za vanjsku upravljačku petlju. Prijenosna funkcija otvorenog kruga vanjske petlje jednaka je prijenosnoj funkciji zatvorenog kruga unutarnje petlje:
+Analogan postupak primjenjuje se i za vanjsku upravljačku petlju. Prijenosna funkcija otvorenog kruga vanjske petlje jednaka je prijenosnoj funkciji zatvorenog kruga unutarnje petlje uz dodatak integratora:
 
 \begin{equation}
-G_{o,out} = \frac{K_{p,in}G_{o,in}}{1 + K_{p,in}G_{o,in}} \ ,
+G_{o,out} = \frac{K_{p,in}G_{o,in}}{1 + K_{p,in}G_{o,in}} \frac{1}{s}\ ,
 \label{eq:tf2}
 \end{equation}
 
-gdje je $K_{p,in} = 0.111$, a $G_{o,in}$  je jednak (\ref{eq:tf}) s uvrštenim parametrima:
+gdje je $K_{p,in} = 0.1$, a $G_{o,in}$  je jednak (\ref{eq:tf}) s uvrštenim parametrima:
 
 
 \begin{equation}
@@ -231,7 +231,7 @@ G_{o,in} = \frac{1}{s(6.4875\cdot10^{-5}s^{2} + 0.0022s  + 0.0210)} \ ,
 pa slijedi konačan izraz za $G_{o,out}$:
 
 \begin{equation}
-G_{o,out} = \frac{0.111}{6.4875\cdot10^{-5}s^{3} + 0.0022s^{2}  + 0.0210s + 0.111} \ .
+G_{o,out} = \frac{0.1}{6.4875\cdot10^{-5}s^{3} + 0.0022s^{2}  + 0.0210s + 0.111} \frac{1}{s} \ .
 \label{eq:Ginz}
 \end{equation}
 \medskip
@@ -239,7 +239,7 @@ G_{o,out} = \frac{0.111}{6.4875\cdot10^{-5}s^{3} + 0.0022s^{2}  + 0.0210s + 0.11
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{vanjska_Kp}
+	\includegraphics[width=\textwidth]{vanjska_Kp2}
 	\caption{Odabir pojačanja P regulatora vanjske upravljačke petlje}
 	\label{fig:vanjska_Kp}
 \end{figure}
@@ -248,7 +248,7 @@ G_{o,out} = \frac{0.111}{6.4875\cdot10^{-5}s^{3} + 0.0022s^{2}  + 0.0210s + 0.11
 Konačan iznos pojačanja P regulatora vanjske upravljačke petlje jednak je:
  \begin{equation}
  \boxed{
- K_{p,out} = 1.3
+ K_{p,out} = 2.32
  } \ .
  \label{eq:Kp_out}
  \end{equation}
@@ -263,7 +263,7 @@ G_{z,out} = \frac{K_{p,out}G_{o,out}}{1 + K_{p,out}G_{o,out}} \ .
  Konačna prijenosna funkcija zatvorenog kruga upravljanja jednaka je:
  
  \begin{equation}
- G_{o,z} = \frac{0.1443}{6.4875\cdot10^{-5}s^{3} + 0.0022s^{2}  + 0.0210s + 0.2553} \ .
+ G_{o,z} = \frac{0.232}{6.4875\cdot10^{-5}s^{4} + 0.0022s^{3}  + 0.0210s^{2} + 0.1s + 0.232} \ .
  \label{eq:Goz}
  \end{equation}
 
