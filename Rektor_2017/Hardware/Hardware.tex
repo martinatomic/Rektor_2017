@@ -411,7 +411,7 @@ Za ispravno i sigurno povezivanje elektroničkog sklopovlja s okolnim uređajima
 
 
 \subsubsection{Dynamixel}
- Upravljanje Dynamixel motorima ostvaruje se prikladnom elektroničkom i programskom potporom. Osnova elektroničkog sklopovlja za Dynamixel komunikaciju je sklop za dvosmjernu komunikaciju. Mikrokontroler upravlja sklopom za dvosmjernu komunikaciju, koristeći 3 signala: \textit{DYN\_SEL}(odabir smjera komunikacije), \textit{DYN\_RX}(primanje podatka s Dynamixel motora) i \textit{DYN\_TX}(slanje podatka na Dynamixel motore). NAPISATI ČEMU SLUŽI HRPA OTPORNIKA I TRANZISTORA!!! Uz Dynamixel komunikaciju, potrebno je dodati i napajanje. Napajanje je izravno s baterije, a stabilizacija napona je ostvarena kondenzatorom iznosa 220 uF. Kondenzator se na tiskanoj pločici nalazi neposredno pored konektora za Dynamixel.
+ Upravljanje Dynamixel motorima ostvaruje se prikladnom elektroničkom i programskom potporom. Osnova elektroničkog sklopovlja za Dynamixel komunikaciju je sklop za dvosmjernu komunikaciju. Mikrokontroler upravlja sklopom za dvosmjernu komunikaciju, koristeći 3 signala: \textit{DYN\_SEL}(odabir smjera komunikacije), \textit{DYN\_RX}(primanje podatka s Dynamixel motora) i \textit{DYN\_TX}(slanje podatka na Dynamixel motore). Uz sklop za dvosmjernu komunikaciju postavljeni su odgovarajući otpornici i NPN tranzistori za usklađivanje napona logičkih razina. Napajanje je osigurano izravno s baterije, a stabilizacija napona je ostvarena kondenzatorom iznosa 220 uF. Kondenzator se na tiskanoj pločici nalazi neposredno pored konektora za Dynamixel.
 
 \begin{table}[H]
 	\centering
