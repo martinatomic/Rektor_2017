@@ -166,11 +166,12 @@ U ovom radu predstavljeno je projektiranje i izrada laboratorijskog modela letje
 
 
 \medskip
-
-Uz sve prednosti koje novi koncept letjelice donosi, dimenzije same \textit{MORUS} letjelice s benzinskim motorima značajno otežavaju testiranje i verificiranje novog koncepta upravljanja. Kako bi olakšali navedeni proces potrebno je bilo izraditi mali, laboratorijski model letjelice. Laboratorijski model multirotorske letjelice s pomičnim masama izrađen je modifikacijom postojeće laboratorijske letjelice \textit{ArduCopter}.  
+U radu je predstavljen matematički model letjelice koji je osnova projektiranja sustava upravljanja. Linearizacijom matematičkog modela letjelice oko radne točke uslijedila je prijenosna funkcija sustava, koja je početni korak projektiranja sustava upravljanja. Parametri prijenosne funckije sustava identificirani su eksperimentalno, uzastopnim mjerenjima. Nakon identifikacije sustava, uslijedilo je projektiranje sustava upravljanja, a jedna od korištenih metoda je krivulja mjesta korijena, predstavljeno člankom \cite{haus2}.
 
 \medskip
-U radu je predstavljen matematički model letjelice koji je osnova projektiranja sustava upravljanja. Parametri matematičkog modela su eksperimentalno utvrđeni postupkom identifikacije. Nakon identifikacije laboratorijskog modela, uslijedilo je projektiranje sustava upravlja predstavljeno člankom \cite{haus2}. Nadalje, postojeća letjelica \textit{ArduCopter} modificirana je dodavanjem kliznih mehanizama za pokretne mase. Uz modifikaciju mehaničke konstrukcije, projektirano je elektroničko sklopovlje i pripadna programska potpora. 
+
+Nadalje, postojeća letjelica \textit{ArduCopter} modificirana je dodavanjem kliznih mehanizama za pokretne mase. Sve mehaničke modifikacije projektirane su u CAD alatu te nakon toga izrađene i montirane na letjelicu. Važan dio modifikacije letjelice odnosi se i na projektiranje elektroničkog sklopovlja i pripadne programske potpore, čija je osnovna zadaća upravljanje radom koračnih motora. Dodatno, uz upravljanje koračnim motorima, elektroničko sklopovlje je prošireno standardnim komunikacijskim i aktuatorskim sučeljima, zbog daljnjih proširenja i korištenja. Programska potpora projektirana je za mikrokontroler \textit{STM32} serije F4, a pravovremeno izvršavanje zadataka osigurano je primjenom operativnog sustava za rad u stvarnom vremenu \textit{FreeRTOS}.
+
 
 \medskip
 Rezultat ovog rada je funkcionalna zračna platforma za testiranje i verificiranje novog koncepta upravljanja multirotorskom letjelicom. Eksperimentalni rezultati su potvrdili isravnost novog koncepta upravljanja letjelicom. Modificirana letjelica \textit{ArduCopter} postaje platforma za sve buduće algoritme upravljanja, uključujući planiranje i izvođenje trajektorija, manipulaciju objektima i sl.
