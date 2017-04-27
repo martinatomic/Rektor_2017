@@ -194,7 +194,7 @@ Pored automata stanja za generiranje impulsnog signala koraka, programski kod sa
 \end{itemize}
 Zbog potrebe istovremenog upravljanja četiri koračna motora, u izradi upravljačkog programa iskorišten je \textit{real-time} operacijski sustav otvorenog koda \textit{FreeRTOS}\textsuperscript{TM}. Korištenje operacijskog sustava olakšalo je implementaciju paralelnog izvođenja upravljačkog algoritma motora. Na Slici \ref{fig:scu_software} prikazana je struktura i interakcija programskih modula u sustavu. U modulima naziva MOTORn\_TASK
 ostvaren je upravljački algoritam motora, modulom MSG\_DECODE\_TASK dekodira se komunikacijski paket primljen putem serijske veze, a modulom TIM4\_IRQHandler upravlja se stanjima izlaznih logičkih signala i vremenskim sklopom mikrokontrolera. Programski moduli napravljeni su kao samostalne
-cjeline, a sa ostalim modulima komuniciraju korištenjem redova poruka (eng. \textit{message queues}). Cjeloviti programski kod je javno dostupan na GitHub servisu \cite{github}.
+cjeline, a sa ostalim modulima komuniciraju korištenjem redova poruka (eng. \textit{message queues}). Cjeloviti programski kod je javno dostupan na GitHub servisu. \footnote{https://github.com/mbedekovic/stepperControl}
 \begin{center}
 	\centering
 	\includegraphics[width=1\textwidth]{{data_flow_diagram}.PNG}
