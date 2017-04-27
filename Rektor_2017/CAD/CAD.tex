@@ -163,10 +163,7 @@
 \usepackage{lscape}
 \begin{document}
 
-
-CAD MODEL mehaničke konstrukcije - BRUNO
-
-U ovom poglavlju opisana je mehanička konstrukcija letjelice. Osnova je postojeća laboratorijska letjelica  \textit{ArduCopter}. Letjelica  \textit{ArduCopter} standarnog je dizajna, s četiri pogonska \textit{beskolektorska DC} motora s pripadnim  elektroničkim upravljačima brzine(\textit{ESC - eng. Electronic Speed Control}). Zbog jednostavnog i modularnog dizajna, letjelica je prikladna platforma za razne promjene i proširenja raznim upravljačkim uređajima, senzorima i aktuatorima. U LARICS laboratoriju trenutno postoji nekoliko modela letjelica ovog tipa koje se koriste za većinu eksperimenata. Dizajn i veličina letjelice prikladna je za većinu eksperimenata koji se provode u laboratoriju, uključujući planiranje i izvođenje trajektorija u prostoru, manipulaciju objekata i drugo. Upravo zato odlučeno je modificirati jednu od postojećih konstrukcija te izraditi platformu za eksperimentalno testiranje novog koncepta upravljanja višerotorskom letjelicom. Glavna modifikacija se odnosi na dizajniranje i izradu mehanizma kojim će se omogućiti pomak mase na kraku. Također, potrebno je smjestiti sve ostale komponente nužne za upravljanje letjelicom, poput kontrolera leta i upravljačkog sklopovlja pomičnih masa. Za izradu dizajna je korišten CAD alat. Konačni 3D izgled modificirane letjelice prikazan je slikom \ref{Slika:3D_drone_final}.
+U ovom poglavlju opisana je mehanička konstrukcija letjelice. Osnova je postojeća laboratorijska letjelica  \textit{ArduCopter}. Letjelica  \textit{ArduCopter} standarnog je dizajna, s četiri pogonska \textit{beskolektorska DC} motora s pripadnim  elektroničkim upravljačima brzine(\textit{ESC - eng. Electronic Speed Control}). Zbog jednostavnog i modularnog dizajna, letjelica je prikladna platforma za razne promjene i proširenja raznim upravljačkim uređajima, senzorima i aktuatorima. U \textit{LARICS} laboratoriju trenutno postoji nekoliko modela letjelica ovog tipa koje se koriste za većinu eksperimenata. Dizajn i veličina letjelice prikladna je za većinu eksperimenata koji se provode u laboratoriju, uključujući planiranje i izvođenje trajektorija u prostoru, manipulaciju objekata i drugo. Upravo zato odlučeno je modificirati jednu od postojećih konstrukcija te izraditi platformu za eksperimentalno testiranje novog koncepta upravljanja višerotorskom letjelicom. Glavna modifikacija odnosi se na dizajniranje i izradu mehanizma kojim će se omogućiti pomak mase na kraku. Također, potrebno je smjestiti sve ostale komponente nužne za upravljanje letjelicom, poput kontrolera leta i upravljačkog sklopovlja pomičnih masa. Za izradu dizajna je korišten CAD alat. Konačni 3D izgled modificirane letjelice prikazan je Slikom \ref{Slika:3D_drone_final}.
 
 \begin{figure}[H]
 	\centering
@@ -177,7 +174,7 @@ U ovom poglavlju opisana je mehanička konstrukcija letjelice. Osnova je postoje
 
 \subsection{Letjelica  \textit{ArduCopter}}
 
-Osnova konstrukcije letjelice s pomičnim masama je multirotorska letjelica  \textit{ArduCopter}, prikazano slikom \ref{fig:3D_drone_original}.  \textit{ArduCopter} je laboratorijska letjelica pogonjena s 4 \textit{beskolektorska DC} motora. Klasičnim konceptom upravljanja, brzom promjenom brzina vrnje motora, ostvaruju se zadani kutevi i kutne brzine letjelice. Letjelica ima modularan dizajn, što omogućava jednostavne nadogradnje, poput različitih upravljačkih uređaja, senzora i aktuatora. Sva proširenja letjelice dodaju se jedno iznad drugoga na već predviđene položaje iznad razine krakova u centru letjelice. Zbog svega navedenog,  \textit{ArduCopter} je odabran kao osnovna platforma za izradu multirotorske letjelice s pomičnim masama.
+Osnova konstrukcije letjelice s pomičnim masama je multirotorska letjelica  \textit{ArduCopter}, prikazano Slikom \ref{fig:3D_drone_original}.  \textit{ArduCopter} je laboratorijska letjelica pogonjena s 4 \textit{beskolektorska DC} motora. Klasičnim konceptom upravljanja, brzom promjenom brzina vrnje motora, ostvaruju se zadani kutevi i kutne brzine letjelice. Letjelica ima modularan dizajn, što omogućava jednostavne nadogradnje, poput različitih upravljačkih uređaja, senzora i aktuatora. Sva proširenja letjelice dodaju se jedno iznad drugoga na već predviđene položaje iznad razine krakova u centru letjelice. Zbog svega navedenog,  \textit{ArduCopter} je odabran kao osnovna platforma za izradu multirotorske letjelice s pomičnim masama.
 
 \medskip
 
@@ -206,16 +203,16 @@ Predstavljenu postojeću letjelicu \textit{ARDUCOPTER} potrebno je modificirati 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{figures/arducopter_original.png}
-	\caption{3D model postojeće letjelice \textit{ARDUCOPTER}}
+	\caption{3D model postojeće letjelice \textit{ArduCopter}}
 	\label{fig:3D_drone_original}
 \end{figure}
 
 \subsection{Klizni mehanizam pokretne mase}
 
-Budući da se novi koncept upravljanja letjelice zasniva na promjeni centra mase, koje je realizirano pomičnim masama na krakovima, potrebno je izraditi mehanizam kretanja pokretne mase po kraku letjelice. Kretanje pomične mase je linijsko, a mehanizam kretanja mora biti realiziran s minimalnim trenjem. Kretanje pokretne mase je ostvareno električnim aktuatorom.
+Budući da se novi koncept upravljanja letjelice zasniva na promjeni centra mase, koje je realizirano pomičnim masama na krakovima, potrebno je izraditi mehanizam kretanja pokretne mase po kraku letjelice. Kretanje pomične mase je linijsko, a mehanizam kretanja mora biti realiziran s minimalnim trenjem. Kretanje pokretne mase ostvareno je električnim aktuatorom.
 
 \subsubsection{Aktuator}
-Zadaća aktuatora pokretne mase je gibanje mase po kraku letjelice, čime se ostvaruje promjena centra mase letjelice. Kako bi ukupna masa letjelice bila manja, sam aktuator na svakom kraku se koristi kao pokretna masa. Za aktuator je odabran koračni motor \textit{NEMA 14}, prikazan slikom \ref{fig:stepper_motor}. Specifikacije koračnog motora su prikazane tablicom \ref{tab:specifikacija_steppera}.
+Zadaća je aktuatora pokretne mase gibanje mase po kraku letjelice, čime se ostvaruje promjena centra mase letjelice. Kako bi ukupna masa letjelice bila manja, sam aktuator na svakom kraku se koristi kao pokretna masa. Za aktuator je odabran koračni motor \textit{NEMA 14}, prikazan slikom \ref{fig:stepper_motor}. Specifikacije koračnog motora su prikazane tablicom \ref{tab:specifikacija_steppera}.
 
 \begin{figure}[H]
 	\centering
@@ -251,7 +248,7 @@ Koračni motor odabran je zato jer pruža mogućnost korištenja upravljanja poz
 
 \subsubsection{Kretanje po kraku letjelice}
 
-Kretanje mase po kraku je linijsko. Kako bi kretanje mase imalo minimalno trenje, odabran je klizni mehanizam prikazan slikom \ref{fig:klizni_mehanizam}. Klizni mehanizam je montiran s doljnje strane kraka, a za aluminijsku kvadratnu cijev je pričvršćen s dva vijka. Klizni mehanizam se sastoji od vodilice i kolica. Na kolicima se nalazi klizni mehanizam koji se sastoji od sitnih kuglica koje omogućavaju klizno gibanje s malim trenjem. Na kolica kliznog mehanizma montiran je posebno konstruiran prihvat koračnog motora(slika \ref{fig:stepper_bracket}), kojim se koračni motor učvršćuje na klizni mehanizam.
+Kretanje mase po kraku je linijsko. Kako bi kretanje mase imalo minimalno trenje, odabran je klizni mehanizam prikazan slikom \ref{fig:klizni_mehanizam}. Klizni mehanizam montiran je s doljnje strane kraka, a za aluminijsku kvadratnu cijev pričvršćen je s dva vijka. Klizni mehanizam se sastoji od vodilice i kolica. Na kolicima se nalazi klizni mehanizam koji se sastoji od sitnih kuglica koje omogućavaju klizno gibanje s malim trenjem. Na kolica kliznog mehanizma montirano je posebno konstruiran prihvat koračnog motora(slika \ref{fig:stepper_bracket}), kojim se koračni motor učvršćuje na klizni mehanizam.
 
 
 \begin{figure}[H]
@@ -325,32 +322,23 @@ Nakon pripreme svih dijelova, slijedi montaža. Slikom \ref{fig:arm_assembly} pr
 \end{figure}
 
 
-STVARNA SLIKA!!!!
+Nakon montaže svih dijelova, modificirana letjelica \textit{ArduCopter} postavljena je na stalak, s omogućenim jednim stupnjem slobode. Konačni izgled letjelice postavljene na stalak prikazan je Slikom \ref{fig:arm_assembly_Real}.
 
 \begin{figure}[H]
-\centering
-\begin{subfigure}{.5\textwidth}
-  \centering
-  \includegraphics[width=.9\linewidth]{figures/arm_assembly1.png}
-  \caption{Pogled 1}
-  \label{fig:sub1}
-\end{subfigure}%
-\begin{subfigure}{.5\textwidth}
-  \centering
-  \includegraphics[width=.9\linewidth]{figures/arm_assembly2.png}
-  \caption{Pogled 2}
-  \label{fig:sub2}
-\end{subfigure}
-\caption{Prikaz laboratorijskog modela jednog kraka letjelice s pomičnom masom}
-\label{fig:arm_assembly_Real}
+	\centering
+	\includegraphics[width=0.9\textwidth]{figures/letjelica.png}
+	\caption{Prikaz laboratorijskog modela letjelice s pomičnom masom}
+	\label{fig:arm_assembly_Real}
 \end{figure}
+
+
 
 \subsection{Horizontalna montaža sastavnih dijelova letjelice}
 Modularni dizajn letjelice \textit{ArduCopter} omogućava jednostavno proširenje letjelice. Iznad ravnine krakova moguće je dodavati razne slojeve. Slojevi su razmaknuti distancerima s navojem M3. 
 
 \subsubsection{Sloj kontrolera leta}
 
-Kontroler leta \textit{Pixhawk} se koristi za cjelokupno upravljanje letjelicom. U samom kontroleru su ugrađeni svi potrebni senzori za let, poput žiroskopa, akcelerometra i dr. Kontroler leta potrebno je postaviti što bliže osima rotacije letjelice. U ovom slučaju kontroler je postaljen neposredno iznad ravnine krakova. Položaj kontrolera leta prikazan je slikom \ref{fig:slot_pixhawk}.
+Kontroler leta \textit{Pixhawk} se koristi za cjelokupno upravljanje letjelicom. U samom kontroleru su ugrađeni svi potrebni senzori za let, poput žiroskopa, akcelerometra i dr. Kontroler leta potrebno je postaviti što bliže osima rotacije letjelice. U ovom slučaju kontroler je postavljen neposredno iznad ravnine krakova. Položaj kontrolera leta prikazan je slikom \ref{fig:slot_pixhawk}.
 
 \begin{figure}[H]
 	\centering
@@ -363,7 +351,7 @@ Kontroler leta \textit{Pixhawk} se koristi za cjelokupno upravljanje letjelicom.
 \subsubsection{Sloj upravljačkog sklopovlja}
 
 Iznad kontolera leta postavljeno je posebno izrađeno elektroničko slopovlje za upravljanje koračnim motorima. Dimenzija tiskane pločice jednaka je dimenziji bazne ploče koja se nalazi u ravnini krakova. Pločica je 
-razmaknuta od kontrolera leta pomoću distancera. Pozicioniranje upravljačkog sklopovlja prikazano je slikom \ref{fig:slot_pcb}.
+razmaknuta od kontrolera leta pomoću distancera. Pozicioniranje upravljačkog sklopovlja prikazano je Slikom \ref{fig:slot_pcb}.
 
 
 \begin{figure}[H]
