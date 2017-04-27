@@ -167,6 +167,8 @@
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 
+
+
 \begin{document}
 %TODO Ubaciti sliku letjelice na gimbalu na početak poglavlja 
 U svrhu verifikacije sustava upravljanja letjelica je postavljena na stalak s jednom osi rotacije (eng. \textit{single axis gimbal}). Os rotacije stalka postavljena je što bliže centru mase letjelice kako bi se osiguralo ponašanje što sličnije letu.
@@ -190,6 +192,9 @@ Nakon odabira parametara regulatora provedena su tri eksperimenta prikazana u na
 
 \subsection{Eksperiment odskočne pobude}
 
+U ovom eksperimentu zadana je odskočna referenca kuta iznosa $\theta_{ref}=0.15 \hspace{5 pt} rad$ u pozitivnom i negativnom smjeru. Snimljeni odziv kuta letjelice prikazan je na Slici \ref{fig:step_kut_odziv}, a odziv kutne brzine prikazan je na Slici \ref{fig:step_brzina_odziv}. Vrijeme porasta
+odziva na skokovitu promjenu reference iznosi $0.4155$ sekundi dok letjelica dostiže postavljenu vrijednost za $3.6384$ sekunde. Nadvišenje odziva na skokovitu pobudu iznosi $2.26 \hspace{2 pt} \%$ Slika \ref{fig:step_brzina_odziv} prikazuje impulsne promjene kutne brzine što potvrđuje brzinu odziva na skokovitu pobudu. Reakcija letjelice na promjenu reference je zadovoljavajuće brza za potrebe stabilnog leta. 
+
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}{.5\textwidth}
@@ -207,13 +212,11 @@ Nakon odabira parametara regulatora provedena su tri eksperimenta prikazana u na
 	
 	\caption{Prikaz kuta i kutne brzine u eksperimentu odskočne pobude}
 	\label{fig:step_odzivi}
-\end{figure} %TODO: Snimi nove odzive na step sa rosbagom ovo baš i ne valja
-U ovom eksperimentu zadana je odskočna referenca kuta iznosa $\theta_{ref}=0.15 \hspace{5 pt} rad$. Snimljeni odziv kuta letjelice prikazan je slikom
-\ref{fig:step_kut_odziv}, a odziv kutne brzine prikazan je na slici \ref{fig:step_brzina_odziv}. Vrijeme porasta odziva na skokovitu promjenu reference iznosi $UNESI\_VRIJEME\_PORASTA$ dok letjelica dostiže postavljenu vrijednost u $UNESI\_SETTLING\_TIME$. Reakcija letjelice na promjenu reference je zadovoljavajuće brza za potrebe stabilnog leta.	%TODO: komentirati još odziv kutne brzine
+\end{figure} 
 
 \subsection{Eksperiment sinusne pobude}
 Ovim eksperimentom ispituje se sposobnost praćenja kontinuirano promjenljivog referentnog signala kuta. 
-Zadana je referenca kuta kao sinusni signal amplitude $0.15 \hspace{5 pt} rad$ i frekvencije $FREKVENCIJA$ te su snimljeni odzivi kuta i kutne brzine letjelice prikazani na slici \ref{fig:sinus_odzivi}.
+Zadana je referenca kuta kao sinusni signal amplitude $0.15 \hspace{5 pt} rad$ i perioda $6.5$ sekundi. Snimljeni odzivi kuta i kutne brzine letjelice prikazani na slici \ref{fig:sinus_odzivi}.
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}{.5\textwidth}
@@ -233,13 +236,12 @@ Zadana je referenca kuta kao sinusni signal amplitude $0.15 \hspace{5 pt} rad$ i
 	\label{fig:sinus_odzivi}
 \end{figure}
 
-\noindent Iz prikazanih odziva vidljivo je da letjelica dobro prati stalno promjenjivu referencu kuta. Signal odziva kuta blago je prigušen i fazno zaostaje za 
-referentni signalom. %TODO izračunati pomak faze i prigušenje amplitude
+\noindent Iz prikazanih odziva vidljivo je da letjelica dobro prati stalno promjenjivu referencu kuta. Signal odziva kuta blago je prigušen i fazno zaostaje $31.6^{\circ}$ za referentni signalom.
 
 \subsection{Eksperiment upravljanja kutom uz uključene rotore}
 Prethodnim eksperimentima ispitano je ponašanje sustava upravljanja uz isključene rotore. Uspješnim izvođenjem prethodnih eksperimenata, ispitano je ponašanje sustava upravljanja uz potisak koji stvara rotacija četiri rotora letjelice. \newline
 Eksperiment je izveden tako da operater pomoću upravljačke konzole uključi rotore i podigne njihovu brzinu rotacije. Pri tome se prati uspješnost stabilizacije letjelice na poremećaj koji stvara potisak rotora. Zatim operater daje referencu kuta poniranja koja se sastoji od sekvence pozitivnog i negativnog pomaka iznosa $0.15 \hspace{5pt} rad$. Slika \ref{fig:rot_odzivi} prikazuje odziv kuta i kutne brzine uz opisanu referencu kuta.
-Iz snimljenih odziva vidljivo je da sustav upravljanja zadržava stabilnost uz uključene rotore, ali je utjecaj rotora prisutan u odzivu. 
+Iz snimljenih odziva vidljivo je da sustav upravljanja zadržava stabilnost uz uključene rotore, ali je utjecaj rotora prisutan u odzivu. Brzina odziva na skokovitu promjenu reference nije narušena utjecajem rotora.
 
 \begin{figure}[H]
 	\centering
