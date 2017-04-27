@@ -184,7 +184,7 @@ Funkcionalnost elektroničkog sklopovlja i programske potpore provjerena je izra
 \subsection{Sastavni dijelovi elektroničkog slopovlja}
 
 \subsubsection{Napajanje}
-Napajanje elektroničkog sklopovlja je osigurano baterijom nazivnog napona 12 V. Na ulazu napajanja dodan je osigurač iznosa 10 A. Iznos osigurača je projektiran prema snazi koračnih motora. U sklopu modula napajanja, potrebno je osigurati stabilne iznose napona 3.3 V i 5V. Prva razina spuštanja ulaznog napona je osigurana 5V regulatorom napona, prekidačkog tipa. Specifikacije regulatora su prikazane tablicom \ref{tab:specifikacija_5V}.
+Napajanje elektroničkog sklopovlja je osigurano baterijom nazivnog napona 12 V. Na ulazu napajanja dodan je osigurač iznosa 10 A. Iznos osigurača je projektiran prema snazi koračnih motora. U sklopu modula napajanja, potrebno je osigurati stabilne iznose napona 3.3 V i 5V. Prva razina spuštanja ulaznog napona je osigurana 5V regulatorom napona, prekidačkog tipa. Specifikacije regulatora su prikazane Tablicom \ref{tab:specifikacija_5V}.
 
 
 \begin{table}[H]
@@ -205,7 +205,7 @@ Napajanje elektroničkog sklopovlja je osigurano baterijom nazivnog napona 12 V.
 	\end{tabular}
 \end{table}
 
-Nadalje, napon iznosa 3.3 V osiguran je snižavanjem napona iznosa 5V iz prethodno opisanog regulatora. U ovom slučaju korišten je linearni regulator. Korištenje ovog tipa regulatora je moguće, budući da je snaga potrošača spojenih na napajanje 3.3 V daleko manja od maksimalnog iznosa struje koju daje 5 V regulator. Specifikacije 3.3 V regulatora prikazane su tablicom \ref{tab:specifikacija_3V3}
+Nadalje, napon iznosa 3.3 V osiguran je snižavanjem napona iznosa 5V iz prethodno opisanog regulatora. U ovom slučaju korišten je linearni regulator. Korištenje ovog tipa regulatora je moguće, budući da je snaga potrošača spojenih na napajanje 3.3 V daleko manja od maksimalnog iznosa struje koju daje 5 V regulator. Specifikacije 3.3 V regulatora prikazane su Tablicom \ref{tab:specifikacija_3V3}
 
 \begin{table}[H]
 	\centering
@@ -384,7 +384,7 @@ Za ispravno i sigurno povezivanje elektroničkog sklopovlja s okolnim uređajima
 \end{table}
 		
 		
-		\item Konektor za CAN komunikaciju. Navedeni konektor sadrži potrebne kontakte za napajanje i dvije podatkovne linije. Konektor je iste serije kao i konektor za serijsku vezu, a osnovna razlika je u broju pinova. Specifikacije konektora za CAN komunikaciju su prikazane tablicom \ref{tab:specifikacija_connector_CAN}.
+		\item Konektor za CAN komunikaciju. Navedeni konektor sadrži potrebne kontakte za napajanje i dvije podatkovne linije. Konektor je iste serije kao i konektor za serijsku vezu, a osnovna razlika je u broju pinova. Specifikacije konektora za CAN komunikaciju su prikazane Tablicom \ref{tab:specifikacija_connector_CAN}.
 		
 \begin{table}[H]
 	\centering
@@ -430,7 +430,7 @@ Za ispravno i sigurno povezivanje elektroničkog sklopovlja s okolnim uređajima
 
 
 \subsubsection{CAN}
-Fizički sloj CAN komunikacije ostvaren je primjenom posebnog sklopa za CAN komunikaciju. Specifikacije sklopa su prikazane tablicom \ref{tab:specifikacija_CAN_bus}. Naveni sklop zadovoljava standard norme ISO 11898-2, za fizički sloj CAN komunikacije visoke brzine. Napajanje sklopa ostvareno je korištenjem reguliranog napona 3.3V, uz dodavanje dodatnih kondenzatora za stabilizaciju napona. Kondenzatori su na tiskanoj pločici postavljeni neposredno pored sklopa. Mikrokontroler upravlja primanjem i slanjem podataka pomoću dva signala(\textit{DRV\_IN} - slanje, \textit{DRV\_OUT} - primanje). Izlaz iz sklopa su dvije CAN linije, visoke i niske razine. Refleksije na kraju linije su spriječene dodavanjem otpornika iznosa 120 Ohm.
+Fizički sloj CAN komunikacije ostvaren je primjenom posebnog sklopa za CAN komunikaciju. Specifikacije sklopa su prikazane Tablicom \ref{tab:specifikacija_CAN_bus}. Naveni sklop zadovoljava standard norme ISO 11898-2, za fizički sloj CAN komunikacije visoke brzine. Napajanje sklopa ostvareno je korištenjem reguliranog napona 3.3V, uz dodavanje dodatnih kondenzatora za stabilizaciju napona. Kondenzatori su na tiskanoj pločici postavljeni neposredno pored sklopa. Mikrokontroler upravlja primanjem i slanjem podataka pomoću dva signala(\textit{DRV\_IN} - slanje, \textit{DRV\_OUT} - primanje). Izlaz iz sklopa su dvije CAN linije, visoke i niske razine. Refleksije na kraju linije su spriječene dodavanjem otpornika iznosa 120 Ohm.
 
 \begin{table}[H]
 	\centering
@@ -458,7 +458,7 @@ Nakon izrade shema elektroničkog sklopovlja slijedi projektiranje tiskane ploč
 		
 		\item \textbf{Raspored komponenata.} Na gornjoj strani pločice smješteni su svi konektori, pogoni koračnih motora, regulatori napona, LED diode, mikrokontoler i kristalni oscilator. Preostale komponente nalaze se na doljnjem sloju pločice. Prilikom rapospoređivanja komponenata bitno je voditi računa o načinu spajanja svake komponente prema ostatku komponenata na sklopovlju. Na taj način se olakšava sljedeći korak, fizičko povezivanje komponenata bakrenim vodovima.
 		
-		\item \textbf{Povezivanje komponenata bakrenim vodovima.} U ovom koraku bitno je ispravno definirati širinu pojedinih vodova, ovisno o očekivanom maksimalnom iznosu struje u vodiču. Širina bakrenih vodova prikazana je tablicom \ref{tab:specifikacija_pcb_with}.
+		\item \textbf{Povezivanje komponenata bakrenim vodovima.} U ovom koraku bitno je ispravno definirati širinu pojedinih vodova, ovisno o očekivanom maksimalnom iznosu struje u vodiču. Širina bakrenih vodova prikazana je Tablicom \ref{tab:specifikacija_pcb_with}.
 
 \begin{table}[H]
 	\centering
