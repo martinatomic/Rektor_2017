@@ -179,21 +179,21 @@ Koordinatni sustav letjelice prikazan je Slikom \ref{fig:mod}. Svi vektori kori�
 	\label{fig:mod}
 \end{figure}
 
-Matematičko modeliranje započinje se standardnim zapisom formule za proizvoljni vektor promjenjive duljine izražen u lokalnom mobilnom koordinatnom susavu letjelice ($L_{0}$):
+Matematičko modeliranje započinje se standardnim zapisom formule za proizvoljni vektor promjenjive duljine izražen u lokalnom mobilnom koordinatnom sustavu letjelice ($L_{0}$):
 
 \begin{equation}
-\frac{d^{\omega}}{dt}({r}_{0}) =  {\dot{r}}_{0} + {\omega} \times {r}_{0} 
+\frac{d^{\omega}}{dt}({r}_{0}) =  {\dot{r}}_{0} + {\omega} \times {r}_{0} \ , 
 \label{eq:r0}
 \end{equation}
 
-gdje $\boldsymbol{\dot{r}_{0}}$ označa vektor stope promjene u $L_{0}$ koordinatnom sustavu, dok $\omega$  označava kutnu brzinu gibanja letjelice, odnosno kutnu brzinu gibanja $L_{0}$ koordinatnog sustava. Bitno je napomenuti kako $\frac{d^{\omega}}{dt}$ označava vremensku derivaciju vektora izraženog u mobilnom koordinatnom sustavu letjelice s obzirom na globalni koordinatni sustav. 
+gdje $\boldsymbol{\dot{r}_{0}}$ označava vektor stope promjene u $L_{0}$ koordinatnom sustavu, dok $\omega$  označava kutnu brzinu gibanja letjelice, odnosno kutnu brzinu gibanja $L_{0}$ koordinatnog sustava. Bitno je napomenuti kako $\frac{d^{\omega}}{dt}$ označava vremensku derivaciju vektora izraženog u mobilnom koordinatnom sustavu letjelice s obzirom na globalni koordinatni sustav. 
 
 \medskip
 
 Centar mase letjelice promatran iz lokalnog koordinatnog sustava dan je sljedećim izrazom:
 
 \begin{equation}
- {r}_{0,c} = \frac{ {m}_{b} {r}_{0,b} + \sum_{i=1}^{4}{m}_{i} {r}_{0,i}}{{m}_{b} + \sum_{i=1}^{4} {m}_{i}} = \frac{\sum_{i=1}^{4} {m}_{i} {r}_{0,i}}{ {M}}
+ {r}_{0,c} = \frac{ {m}_{b} {r}_{0,b} + \sum_{i=1}^{4}{m}_{i} {r}_{0,i}}{{m}_{b} + \sum_{i=1}^{4} {m}_{i}} = \frac{\sum_{i=1}^{4} {m}_{i} {r}_{0,i}}{ {M}} \ , 
 \label{eq:r0c}
 \end{equation}
 
@@ -205,36 +205,36 @@ gdje je s $m_{b}$ označena masa krutog tijela letjelice bez masa. Masa pomične
 
 Koristeći prethodni izraz izražava se brzina koordinatnog sustava centra mase $v_{c}$ s obzirom na globalni koordinatni sustav:
 \begin{equation}
- {v_{c} = v_{0} + v_{0,c} + \omega \times r_{0,c}}
+ {v_{c} = v_{0} + v_{0,c} + \omega \times r_{0,c}} \ , 
 \label{eq:vc}
 \end{equation}
 
 gdje su redom $v_{0}$ brzina $L_{0}$ koordinatnog sustava s obzirom na $L_{I}$ i $v_{0,c}$ brzina $L_{CoG}$ koordinatnog sustava s obzirom na $L_{0}$. Analogno (\ref{eq:vc}) slijedi izraz za brzinu $i$-te pomične mase $v_{i}$:
 \begin{equation}
- {v_{i} = v_{0} + v_{0,i} + \omega \times r_{0,i}}
+ {v_{i} = v_{0} + v_{0,i} + \omega \times r_{0,i}} \ . 
 \label{eq:vi}
 \end{equation}
 
-Prethodni izraz (\ref{eq:vi}) moguće je proširiti uvrštavanjem izraza (\ref{eq:vc}), te na taj način izraziti brzinu pokretne mase $i$ kao funkciju brzine $v_{c}$: 
+Prethodni izraz (\ref{eq:vi}) moguće je proširiti uvrštavanjem izraza (\ref{eq:vc}), te tako izraziti brzinu pokretne mase $i$ kao funkciju brzine $v_{c}$: 
 \begin{equation}
- {v_{i} = v_{c} + v_{0,i} - v_{0,c} + \omega \times r_{c,i}}
+ {v_{i} = v_{c} + v_{0,i} - v_{0,c} + \omega \times r_{c,i}} \ .
 \label{eq:vi2}
 \end{equation}
 
 $v_{0,i}$ označava relativnu brzinu $i$-te mase, $r_{c,i}$ označava poziciju $i$-te mase u $L_{CoG}$ koordinatnom sustavu, dok se $v_{0,c}$ računa prema (\ref{eq:v0c}):
 \begin{equation}
- {v_{0,c} = \frac{\sum_{i=1}^{4}m_{i}\dot{r}_{0,i}}{M}}
+ {v_{0,c} = \frac{\sum_{i=1}^{4}m_{i}\dot{r}_{0,i}}{M}} \ .
 \label{eq:v0c}
 \end{equation}
 
 Prema definiciji \cite{ilijic}, vremenska derivacija linearnog momenta (\ref{eq:Li}) jednaka je zbroju svih vanjskih sila koje djeluju na česticu sustava, odnosno na $i$-tu pokretnu masu (\ref{eq:Lidot}). 
 \begin{equation}
- {L_{i} = m_{i} \cdot v_{i}}
+ {L_{i} = m_{i} \cdot v_{i}} \ .
 \label{eq:Li}
 \end{equation}
 
 \begin{equation}
- {\frac{d^{\omega}}{dt} L_{i} = \sum_{k=1}^{3}f_{ik}}
+ {\frac{d^{\omega}}{dt} L_{i} = \sum_{k=1}^{3}f_{ik}} \ .
 \label{eq:Lidot}
 \end{equation}
 
@@ -243,7 +243,7 @@ U slučaju ove bespilotne letjelice tri vanjske sile djeluju na pokretne mase:
 \begin{enumerate}
  \item Sila motora koji upravlja pomakom masa:
 \begin{equation}
-f_{i1}  =K_{m}T_{r}U_{i}\left(\sin\left(\frac{\pi}{2}i\right) \bm{\hat{i}} - \cos\left( \frac{\pi}{2}i\right) \bm{\hat{j}}\right), i \in \{1,2,3,4\}
+f_{i1}  =K_{m}T_{r}U_{i}\left(\sin\left(\frac{\pi}{2}i\right) \bm{\hat{i}} - \cos\left( \frac{\pi}{2}i\right) \bm{\hat{j}}\right), i \in \{1,2,3,4\} \ ,
 \label{eq:fi1}
 \end{equation}
 
@@ -251,14 +251,14 @@ gdje je $K_{m}$ konstanta motora, $T_{r}$ prijenosni omjer a $U_{i}$ napon na mo
 
 \item Sila gravitacije:
 \begin{equation}
-f_{i2} = -m_{i}\cdot g \bm{\hat{K}}
+f_{i2} = -m_{i}\cdot g \bm{\hat{K}} \ ,
 \label{eq:fi2}
 \end{equation}
 gdje je  $\bm{\hat{K}}$ jedinični vektor u $L_{I}$ koordinatnom sustavu koji pokazuje u $z$ smjeru, dok je $g$ gravitacijska konstanta. 
 
 \item Sila trenja modelirana je tako da bude proporcionalna brzini pokretne mase
 \begin{equation}
-f_{i3} = -c_{d} \cdot v_{0,i}
+f_{i3} = -c_{d} \cdot v_{0,i} \ ,
 \label{eq:fi3}
 \end{equation}
 
@@ -269,91 +269,91 @@ gdje je $c_{d}$ koeficijent trenja.
 Kombiniranjem izraza (\ref{eq:vi}) i (\ref{eq:Lidot}) slijedi izraz za linearnu akceleraciju $t$-te pomične mase:
 
 \begin{equation}
-\frac{d^{\omega}}{dt}v_{0,i} = \frac{1}{m_{i}}\left(\sum_{k=1}^{3}f_{ik}\right) - \frac{d^{\omega}}{dt} \left( v_{0} + \omega \times r_{0,i} \right) 
+\frac{d^{\omega}}{dt}v_{0,i} = \frac{1}{m_{i}}\left(\sum_{k=1}^{3}f_{ik}\right) - \frac{d^{\omega}}{dt} \left( v_{0} + \omega \times r_{0,i} \right)  \ .
 \label{eq:voidot}
 \end{equation}
 
 Slijedi modeliranje linearnog momenta cjelokupnog sustava. Prema definiciji vrijedi da je ukupan linearni moment sustava jednak zbroju linearnog momenta krutog tijela letjelice $L_{b}$ te linearnog momenta svake od pomičnih masa $L_{i}$:
 \begin{equation}
-L_{s} = L_{b} + \sum_{i=1}^{4}L_{i}
+L_{s} = L_{b} + \sum_{i=1}^{4}L_{i} \ .
 \label{eq:Ls}
 \end{equation}
 
 Koristeći izraze (\ref{eq:r0c}) i (\ref{eq:vi}), kao i činjenicu da je $v_{0,b} = 0$ slijedi:
 \begin{equation}
-L_{s} = M \cdot (v_{0} + \omega \times r_{0,c}) + \sum_{i=1}^{4}m_{i}c_{0,i} = M \cdot (v_{0} + \omega \times r_{0,c}) + \sum_{i=1}^{4}L_{0,i}
+L_{s} = M \cdot (v_{0} + \omega \times r_{0,c}) + \sum_{i=1}^{4}m_{i}c_{0,i} = M \cdot (v_{0} + \omega \times r_{0,c}) + \sum_{i=1}^{4}L_{0,i} \ .
 \label{eq:Ls2}
 \end{equation}
 
 Konačno, koristeći definiciju stope promjene linearnog momenta, slijedi izraz za ubrzanje krutog tijela letjelice:
 \begin{equation}
-\frac{d^{\omega}}{dt} v_{0} = \frac{1}{M} \left( \sum_{j=1}^{4} F_{rj} + F_{g} - \frac{d^{\omega}}{dt} \sum_{i=1}^{4}L_{0,i}  \right) - \frac{d^{\omega}}{dt} (\omega \times r_{0,c})
+\frac{d^{\omega}}{dt} v_{0} = \frac{1}{M} \left( \sum_{j=1}^{4} F_{rj} + F_{g} - \frac{d^{\omega}}{dt} \sum_{i=1}^{4}L_{0,i}  \right) - \frac{d^{\omega}}{dt} (\omega \times r_{0,c}) \ .
 \label{eq:v0dot}
 \end{equation}
 
 Potisak motora te sila gravitacije su vanjske sile koje djeluju na cijeli sustav.
 
-Sila potiska koju uzrokuje svaki rotor prikazana je kvaratnim izazom (\ref{eq:Frj}), gdje su $\Omega_{j}$ brzina $j$-tog rotora, $b_{f}$ konstanta motora, a  $\bm{\hat{k}}$ jedinični vektor u smjeru $z$ osi:
+Sila potiska koju uzrokuje svaki rotor prikazana je kvadratnim izrazom (\ref{eq:Frj}), gdje su $\Omega_{j}$ brzina $j$-tog rotora, $b_{f}$ konstanta motora, a  $\bm{\hat{k}}$ jedinični vektor u smjeru $z$ osi:
 \begin{equation}
-F_{rj} = b_{f}\Omega_{j}^{2} \bm{\hat{k}}
+F_{rj} = b_{f}\Omega_{j}^{2} \bm{\hat{k}} \ .
 \label{eq:Frj}
 \end{equation}
 
 
 Uz pretpostavku upravljane brzine rotora, njezina zatvorena petlja opisana je sljedećim izrazom, gdje su $T_{r}$ vremenska konstanta rotora pogonjenog benzinskim motorom, a $\Omega_{r,j}$ referentna brzina rotora:
 \begin{equation}
-T_{r}\dot{\Omega}_{j} + \Omega_{j} = \Omega_{r,j}
+T_{r}\dot{\Omega}_{j} + \Omega_{j} = \Omega_{r,j} \ .
 \label{eq:omega_rj}
 \end{equation}
 
 Sila gravitacije izražena u globalnom koordinatnom sustavu $L_{I}$ jednaka je:
 \begin{equation}
-F_{g} = -Mg \bm{\hat{K}}
+F_{g} = -Mg \bm{\hat{K}} \ .
 \label{eq:Fg}
 \end{equation}
 
 
 Sljedeći korak je modeliranje kutnog gibanja letjelice. Kreće se od definicije kutnog momenta izraženog u koordinatnom sustavu centra mase zajedno u kombinaciji s (\ref{eq:vi2}). Kutni moment cijelog sustava $H_{s}$ prikazan je sljedećim izrazom (\ref{eq:Hs}):
 \begin{equation}
-H_{s} = H_{b} + \sum_{i=1}^{4}H_{i}
+H_{s} = H_{b} + \sum_{i=1}^{4}H_{i} \ .
 \label{eq:Hs}
 \end{equation}
 
 $H_{b}$ označava kutni moment krutog tijela letjelice (bez pomičnih masa), te je jednak (\ref{eq:Hb}):
 \begin{equation}
-H_{b} = \int_{k} r_{c,k} \times (v_{k}dm_{k}) = \int_{k} r_{c,k} \times (v_{c} + v_{0,k} - v_{0,c} + \omega \times r_{c,k})dm_{k}
+H_{b} = \int_{k} r_{c,k} \times (v_{k}dm_{k}) = \int_{k} r_{c,k} \times (v_{c} + v_{0,k} - v_{0,c} + \omega \times r_{c,k})dm_{k} \ .
 \label{eq:Hb}
 \end{equation}
 
 I konačno, $H_{i}$ označava kutni moment $i$-te mase:
 \begin{equation}
-H_{i} = \int_{ji} r_{c,ji} \times (v_{ji}dm_{ji}) = \int_{ji} r_{c,ji} \times (v_{c} + v_{0,i} - v_{0,c} + \omega \times r_{c,ji})dm_{ji}
+H_{i} = \int_{ji} r_{c,ji} \times (v_{ji}dm_{ji}) = \int_{ji} r_{c,ji} \times (v_{c} + v_{0,i} - v_{0,c} + \omega \times r_{c,ji})dm_{ji} \ .
 \label{eq:Hi}
 \end{equation}
 
-$dm_{k}$ označava $k$-ti Infinitezimalni dio krutog tijela letjelice, dok $v_{k}$ označava njegovu brzinu, a $r_{c,k}$ vektor udaljenosti između centra mase tijela te $k$-tog dijela tijela. Prema definiciji je $v_{0,k} = 0$. 
+$dm_{k}$ označava $k$-ti infinitezimalni dio krutog tijela letjelice, dok $v_{k}$ označava njegovu brzinu, a $r_{c,k}$ vektor udaljenosti između centra mase tijela te $k$-tog dijela tijela. Prema definiciji je $v_{0,k} = 0$. 
 
 Iz definicije momenta inercije u kombinaciji s (\ref{eq:r0c}) slijedi:
 \begin{equation}
-H_{s} = I_{s}^{c}\omega + \sum_{i=1}^{4}r_{c,i} \times L_{0,i}
+H_{s} = I_{s}^{c}\omega + \sum_{i=1}^{4}r_{c,i} \times L_{0,i} \ ,
 \label{eq:Hs2}
 \end{equation}
 
-gdje je $I_{s}^{c}$ cjelokupni moment inercije sustava s obzirom na centar mase letjelice, te se može izražunati kao zbroj inercijskih doprinosa svakog dijela letjelice:
+gdje je $I_{s}^{c}$ cjelokupni moment inercije sustava s obzirom na centar mase letjelice, te se može izračunati kao zbroj inercijskih doprinosa svakog dijela letjelice:
 \begin{equation}
-I_{s}^{c} = I_{b}^{c} + \sum_{i=1}^{4}I_{i}^{c}
+I_{s}^{c} = I_{b}^{c} + \sum_{i=1}^{4}I_{i}^{c} \ .
 \label{eq:Ics}
 \end{equation}
 
 $I_{b}^{c}$ označava moment inercije krutog tijela letjelice, dok $I_{i}^{c}$ označava moment inercije $i$-te pomične mase. Koristeći \textit{Steinerov teorem}, odnosno \textit{Teorem o paralelnim osima}, slijedi izraz za proračun momenata inercije pomičnih masa:
 \begin{equation}
-I_{i}^{c} = I_{i} + m_{i} \left(  r_{ci,}^{T} \cdot r_{c,i}E_{3} - r_{c,i}\cdot r_{c,i}^{T} \right)
+I_{i}^{c} = I_{i} + m_{i} \left(  r_{ci,}^{T} \cdot r_{c,i}E_{3} - r_{c,i}\cdot r_{c,i}^{T} \right) \ ,
 \label{eq:Iic}
 \end{equation}
 
 gdje je s $I_{i}$ označen moment inercije $i$-tog dijela. Sljedeći izraz korišten je za izvođenje izraza za stopu promjene kutne brzine:
 \begin{equation}
-\frac{d^{\omega}}{dt} \left( I_{s}^{c} \omega + \sum_{i=1}^{4} r_{c,i}\times L_{0,i}  \right) = \sum_{j=1}^{4}(M_{fi} + M_{dj}) + M_{g}
+\frac{d^{\omega}}{dt} \left( I_{s}^{c} \omega + \sum_{i=1}^{4} r_{c,i}\times L_{0,i}  \right) = \sum_{j=1}^{4}(M_{fi} + M_{dj}) + M_{g} \ .
 \label{eq:dtM}
 \end{equation}
 
@@ -362,7 +362,7 @@ Vanjski momenti koji djeluju na sustav letjelice te koji se sljedeći modeliraju
 \begin{enumerate}
 \item Moment koji stvaraju sile rotora na kraku
 \begin{equation}
-M_{fj} = r_{c,rj} \times F_{rj} = (r_{c,0} + r_{0,rj}) \times F_{rj}
+M_{fj} = r_{c,rj} \times F_{rj} = (r_{c,0} + r_{0,rj}) \times F_{rj} \ ,
 \label{eq:Mfj}
 \end{equation}
 
@@ -371,22 +371,22 @@ gdje je s $r_{0,rj}$ označen vektor koji se proteže od ishodišta letjelice do
 \item Momenti rotora uzrokovani induciranim trenjem:
 
 \begin{equation}
-M_{dj} = \zeta_{j}b_{m}b_{f}\Omega_{j}^{2} \bm{\hat{k}}
+M_{dj} = \zeta_{j}b_{m}b_{f}\Omega_{j}^{2} \bm{\hat{k}} \ ,
 \label{eq:Mdj}
 \end{equation}
 
-gdje je $b_{m}$ momentna konstanta propulzijskog sustava, $\zeta_{j} =  1$ ukoliko se $j$-ti propeler okreće u smjeru kazaljke na satu (propeleri 1 i 3), a $\zeta_{j} =  -1$ ukoliko se $j$-ti propeler okreće u smjerusuprotnom smjeru kazaljke na satu (propeleri 2 i 4).
+gdje je $b_{m}$ momentna konstanta propulzijskog sustava, $\zeta_{j} =  1$ ako se $j$-ti propeler okreće u smjeru kazaljke na satu (propeleri 1 i 3), a $\zeta_{j} =  -1$ ako se $j$-ti propeler okreće u smjeru suprotnom smjeru kazaljke na satu (propeleri 2 i 4).
 
 \item Moment uzrokovan silom gravitacije
 \begin{equation}
-M_{g} = r_{c,b} \times (-m_{b}g \bm{\hat{K}}) + \sum_{i=1}^{4} \times (-m_{i}g \bm{\hat{K}})
+M_{g} = r_{c,b} \times (-m_{b}g \bm{\hat{K}}) + \sum_{i=1}^{4} \times (-m_{i}g \bm{\hat{K}}) \ ,
 \label{eq:Mg}
 \end{equation}
 \end{enumerate}
 
 gdje su $r_{c,b}$ i $r_{c,i}$ pozicije letjelice i $i$-te pomične mase.
 
-Pri opisu pozicije letjelice koriste se standardni Eulerovi kutevi. Za prelazak iz globalnog u lokalni koordinatni sustav letjelice koristi se pretpostavka da se letjelice prvo rotira oko $z$ osi za \textit{kut zakretanja} $\psi$, zatim da se rotira oko oko $y$ osi za \textit{kut naginjanja} $\theta$, te konačko da se rotira oko $x$ osi za \textit{kut kotrljanja} $\varphi$.
+Pri opisu pozicije letjelice koriste se standardni Eulerovi kutevi. Za prelazak iz globalnog u lokalni koordinatni sustav letjelice koristi se pretpostavka da se letjelice prvo rotira oko $z$ osi za \textit{kut zakretanja} $\psi$, zatim da se rotira oko $y$ osi za \textit{kut naginjanja} $\theta$, te konačno da se rotira oko $x$ osi za \textit{kut kotrljanja} $\varphi$.
 
 
 
@@ -400,13 +400,13 @@ Prethodno modelirani nelinearni dinamički model letjelice potrebno je stoga lin
 
 \medskip
 
-S obzirom da je linearizacija nelinearnih modela osjetljiv zadatak, potrebno je pomno odabrati početne uvjete, odnosno radnu točku oko koje će se obaviti linearizacija. Kao radna toča, odnosno početno stanje sustava letjelice, odabire se stanje u kojem letjelica lebdi na mjestu (\textit{hover condition}). To stanje podrazumijeva malu kutnu brzinu letjelice. Odabir ovog početnog stanja za posljedicu ima zanemarenje žiroskopskog i centrifugalnog efekta koji se javljaju pri analizi pokretnog referentnog okvira. 
+S obzirom na to da je linearizacija nelinearnih modela osjetljiv zadatak, potrebno je pomno odabrati početne uvjete, odnosno radnu točku oko koje će se obaviti linearizacija. Kao radna točka, odnosno početno stanje sustava letjelice, odabire se stanje u kojem letjelica lebdi na mjestu (\textit{hover condition}). To stanje podrazumijeva malu kutnu brzinu letjelice. Odabir ovog početnog stanja za posljedicu ima zanemarenje žiroskopskog i centrifugalnog efekta koji se javljaju pri analizi pokretnog referentnog okvira. 
 
 \medskip
 
-Nadalje, podrazumijeva se kako klizni mehanizam pokretnih masa osigurava $PT_{2}S$ odziv dinamike pozicije mase na zadanu pobudu. Istu je dinamiku potrebno identificirati za potrebe projektiranja upravljanja, što je obrađeno u sljedećem poglavlju ovog rada. Opći izraz $PT_{2}S$ člana jednak je izrazu (\ref{eq:pt2s}) u nastavku, gdje $\omega_{mm}$ i $\zeta_{mm}$ predstavljaju nazivnu frekvenciju i prigušenje sustava, a $x_{i}$ poziciju $i$-te mase u lokalnom koordinatnom sustavu:
+Nadalje, podrazumijeva se kako klizni mehanizam pokretnih masa osigurava $PT_{2}S$ odziv dinamike pozicije mase na zadanu pobudu. $PT_{2}S$ je sustav drugog reda opisan vlastitom frekvencijom i koeficijentom prigušenja. Istu je dinamiku potrebno identificirati za potrebe projektiranja upravljanja, što je obrađeno u sljedećem poglavlju ovog rada. Opći izraz $PT_{2}S$ člana jednak je izrazu (\ref{eq:pt2s}) u nastavku, gdje $\omega_{mm}$ i $\zeta_{mm}$ predstavljaju nazivnu frekvenciju i prigušenje sustava, a $x_{i}$ poziciju $i$-te mase u lokalnom koordinatnom sustavu:
 \begin{equation}
-\frac{x_{i}}{x_{i, ref}}(s) = \frac{1}{\frac{1}{\omega_{mm}^{2}}s^{2} + \frac{2\zeta_{mm}}{\omega_{mm}}s + 1 }
+\frac{x_{i}}{x_{i, ref}}(s) = \frac{1}{\frac{1}{\omega_{mm}^{2}}s^{2} + \frac{2\zeta_{mm}}{\omega_{mm}}s + 1 } \ .
 \label{eq:pt2s}
 \end{equation}
 
@@ -415,7 +415,7 @@ Dinamikom $kuta \ poniranja \ \theta$ upravlja se isključivo pozicijama masa 1 
 r_{0,i} = \left[
 \begin{matrix}
 \sin\left(\frac{\pi}{2}i\right)\frac{L}{2} + x_{i} & 0 & z_{m}
-\end{matrix} \right] ^{T}, i \in \{ 1, 3\}
+\end{matrix} \right] ^{T}, i \in \{ 1, 3\} \ .
 \label{eq:r0i}
 \end{equation}
 
@@ -423,7 +423,7 @@ r_{0,i} = \left[
 r_{0,j} = \left[
 \begin{matrix}
 0 & -\cos\left(\frac{\pi}{2}j\right)\frac{L}{2} + y_{j} & z_{m}
-\end{matrix} \right] ^{T}, j \in \{ 2, 4\}
+\end{matrix} \right] ^{T}, j \in \{ 2, 4\} \ .
 \label{eq:r0j}
 \end{equation}
 
@@ -433,7 +433,7 @@ Sljedeći izraz opisuje centar mase s obzirom na lokalni koordinatni sustav letj
 r_{0,c} = \mu \cdot \left[
 \begin{matrix}
 (x_{1} + x_{3}) & (y_{2} + y_{4}) & 4z_{m}
-\end{matrix} \right]^{T}
+\end{matrix} \right]^{T} \ ,
 \label{eq:r0c2}
 \end{equation}
 
@@ -442,7 +442,7 @@ gdje je $\mu = \frac{m}{M}$. Pozicija rotora u lokalnom koordinatnom sustavu opi
 r_{0,rj} = \left[
 \begin{matrix}
 sin\left(\frac{\pi}{2}j\right)L & -\cos\left(\frac{\pi}{2}j\right)L & z_{r}
-\end{matrix} \right] ^{T}, j \in \{ 1, 2, 3, 4\}
+\end{matrix} \right] ^{T}, j \in \{ 1, 2, 3, 4\} \ ,
 \label{eq:r0rj}
 \end{equation}
 
@@ -454,7 +454,7 @@ gdje $z_{r}$ označava vertikalni odmak rotora od ishodišta koordinatnog sustav
 \end{matrix}\right]^{T} + \sum_{j=1}^{4}F_{r,j} 
 \left[\begin{matrix}
 -\mu(y_{2} + y_{4}) & \mu(x_{1} + x_{3}) & 0
-\end{matrix}\right]^{T}
+\end{matrix}\right]^{T} \ ,
 \label{eq:sumaMfj}
 \end{equation}
 
@@ -472,7 +472,7 @@ I_{yy}\dot{\omega}_{y}  & = \sum_{j=1}^{4}M_{fj}\cdot  \bm{\hat{j}} - (I_{xx} - 
 &+ 4m(\dot{x}_{1}x_{3} + \dot{x}_{3}x_{1})\mu(1-\mu)\omega_{y} \\
 &+ m \omega_{z}(\dot{y}_{2} + \dot{y}_{4})z_{m}(1-4\mu) \\
 &+ m\omega_{x}\mu ((y_{2} + y_{4})(\dot{x}_{1} + \dot{x}_{3})-(\dot{y}_{2} + \dot{y}_{4})(x_{1} + x_{3})) \\
-&- m(\ddot{x}_{1} + \ddot{x}_{3})z_{m}(1 - 4\mu)
+&- m(\ddot{x}_{1} + \ddot{x}_{3})z_{m}(1 - 4\mu) \ ,
 \end{split}
 \label{eq:Iyyw}
 \end{equation}
@@ -481,23 +481,23 @@ gdje su $I_{xx}$, $I_{yy}$ i $I_{zz}$ nominalni momenti inercije u $x$, $y$ i $z
 
 \medskip
 
-Krajnji cilj dobivanja prijenosne funkcije sustava svodi se na dizajniranje upravljanja za jedan takav sustav, stoga se u model uvodi upravljački signal $u$. S obzirom da prikazujemo dinamiku \textit{kuta poniranja}, taj je upravljački signal jednak referentnim vrijednostima za poziciju masa 1 i 3:
+Krajnji cilj dobivanja prijenosne funkcije sustava svodi se na dizajniranje upravljanja za jedan takav sustav, stoga se u model uvodi upravljački signal $u$. S obzirom na to da prikazujemo dinamiku \textit{kuta poniranja}, taj je upravljački signal jednak referentnim vrijednostima za poziciju masa 1 i 3:
 
 \begin{equation}
- u_{\theta} = x_{1, ref} = x_{3, ref}
+ u_{\theta} = x_{1, ref} = x_{3, ref} \ .
  \label{eq:u}
  \end{equation} 
 
-Konačno, prijenosna funkcija slijedi iz (\ref{eq:pt2s}), (\ref{eq:u}), (\ref{eq:sumaMfj}) te drugog i devetog dijela izraza (\ref{eq:Iyyw}) (jer iz njih proizlazi dominantan dinamika kuta valjanja u početnom stanju lebdjenja) \cite{haus2} \cite{haus3}:
+Konačno, prijenosna funkcija slijedi iz (\ref{eq:pt2s}), (\ref{eq:u}), (\ref{eq:sumaMfj}) te drugog i devetog dijela izraza (\ref{eq:Iyyw}) (jer iz njih proizlazi dominantan dinamika kuta valjanja u početnom stanju lebdenja) \cite{haus2} \cite{haus3}:
 
 \begin{equation}
 \boxed{
 \frac{\omega_{y}(s)}{u_{\theta}(s)} = \frac{2mg - 2m(1-4\mu)z_{m}s^{2}}{I_{yy}s \left(\frac{1}{\omega_{mm}^{2}}s^{2} + \frac{2\zeta_{mm}}{\omega_{mm}}s + 1  \right)}
-}
+} \ ,
 \label{eq:tf}
 \end{equation}
 
-uz pretpostavku da je potisak jednog rotora u stanju lebdjenja jednak $F_{r,j}|_{0} = \frac{M_{g}}{4}$.
+uz pretpostavku da je potisak jednog rotora u stanju lebdenja jednak $F_{r,j}|_{0} = \frac{M_{g}}{4}$.
 
 
 

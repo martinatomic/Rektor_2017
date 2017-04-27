@@ -162,7 +162,7 @@
 \usepackage{lscape}
 \begin{document}
 
-Cilj modeliranja svakog sustava jest biti u mogućnosti u konačnici tim sustavom upravljati. Postoje jednopetljaste i višepetljaste strukture upravljanja. Jednopetljastim strukturama upravljanja često nije moguće postići visoke performanse upravljanja složenim sustavima iz razloga što se složenim sustavom nastoji upravljati na temelju samo jedne informacije o sustavu. Stoga, regulator na promjene u sustavu reagira tek nakon što se njihov efekt registrira na iznosu izlazne veličine. Iz tog razloga značajnu primjenu imaju višepetljaste strukture upravljanja, odnosno strukture \textit{kaskadnog} upravljanja. Osnovna ideja kaskadnog upravljanja jest uz primarnu reguliranu veličinu uvesti dodatne, pomoćne, izlazne veličine. Time bi se omogućila brža reakcija sustava upravljanja na djelovanje poremećajne veličine, prije nego li ona počne djelovati na primarnu reguliranu veličinu \cite{uemp}. Vanjska petlja je primarna petlja, dok su unutarnje pomoćne.   
+Cilj modeliranja ovog sustava jest biti u mogućnosti u konačnici tim sustavom upravljati. Postoje jednopetljaste i višepetljaste strukture upravljanja. Jednopetljastim strukturama upravljanja često nije moguće postići visoke performanse upravljanja složenim sustavima iz razloga što se složenim sustavom nastoji upravljati na temelju samo jedne informacije o sustavu. Stoga, regulator na promjene u sustavu reagira tek nakon što se njihov efekt registrira na iznosu izlazne veličine. Iz tog razloga značajnu primjenu imaju višepetljaste strukture upravljanja, odnosno strukture \textit{kaskadnog} upravljanja. Osnovna ideja kaskadnog upravljanja jest uz primarnu reguliranu veličinu uvesti dodatne, pomoćne, izlazne veličine. Time bi se omogućila brža reakcija sustava upravljanja na djelovanje poremećajne veličine, prije nego li ona počne djelovati na primarnu reguliranu veličinu \cite{uemp}. Vanjska petlja je primarna petlja, dok su unutarnje pomoćne.   
 
 \medskip
 
@@ -186,31 +186,12 @@ Određivanje parametara regulatora obavlja se u dva koraka. Prvo se određuje po
 
 \medskip
 
-Za određivanje \textit{krivulje mjesta korijena} unutarnje petlje koristi se prijenosna funkcija otvorenog kruga (\ref{eq:tf}) te parametri iz Tablice (\ref{params}). Rezultirajući KMK prikazan je Slikom (\ref{fig:KMK_in}):
+Za određivanje \textit{krivulje mjesta korijena} unutarnje petlje koristi se prijenosna funkcija otvorenog kruga (\ref{eq:tf}) te parametri iz Tablice (\ref{params}). Sustav je stabilan za sva pojačanja za koja se nule i polovi nalaze unutar jedinične kružnice.  Rezultirajući KMK prikazan je Slikom (\ref{fig:unutarnja_Kp}), na kojoj je također prikazan način odabira parametra P regulatora unutarnje petlje. Na slici su prikazana dva očitanja pojačanja. Jedan se nalazi na rubu stabilnosti i jednak je $K= 0.7$. S obzirom na da je to pojačanje na rubu stabilnosti znači da ako se odabere $K_{p} > K$, sustav će postati nestabilan. Iz tog razloga odabire se pojačanje koje polove povlači unutar jedinične kružnice, prikazano drugim očitanjem. Konačan iznos pojačanja P regulatora unutarnje upravljačke petlje jednak je:
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{unutarnja}
-	\caption{\textit{Krivulja mjesta korijena} otvorenog kruga unutarnje regulacijske petlje}
-	\label{fig:KMK_in}
-\end{figure}
-
-\newpage
-Slika (\ref{fig:KMK_in_zoom}) prikazuje uvećan prikaz Slike (\ref{fig:KMK_in}) oko jedinične kružnice. Sustav je stabilan za sva pojačanja za koja se nule i polovi nalazi unutar jedinične kružnice.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{unutarnja_zoom}
-	\caption{Uvećan prikaz \textit{krivulje mjesta korijena} otvorenog kruga unutarnje regulacijske petlje}
-	\label{fig:KMK_in_zoom}
-\end{figure}
-
-
- Odabir paramtera P regulatora unutarnje petlje prikazan je Slikom (\ref{fig:unutarnja_Kp}). Na slici su prikazana dva očitanja pojačanja. Jedan se nalazi na rubu stabilnosti i jednak je $K= 0.7$. S obzirom da je to pojačanje na rubu stabilnosti znači da ukoliko se odabere $K_{p} > K$, sustav će postati nestabilan. Iz tog razloga odabire se pojačanje koje polove povlači unutar jedinične kružnice, prikazano drugim očitanjem. Konačan iznos pojačanja P regulatora unutarnje upravljačke petlje jednak je:
  \begin{equation}
  \boxed{
  K_{p,in} = 0.111
- }
+ } \ .
  \label{eq:Kp_in}
  \end{equation}
 
@@ -235,25 +216,26 @@ Stabilnost zatvorenog kruga unutarnje petlje može se ispitati odzivom prijenosn
 Analogan postupak primjenjuje se i za vanjsku upravljačku petlju. Prijenosna funkcija otvorenog kruga vanjske petlje jednaka je prijenosnoj funkciji zatvorenog kruga unutarnje petlje:
 
 \begin{equation}
-G_{o,out} = \frac{K_{p,in}G_{o,in}}{1 + K_{p,in}G_{o,in}}
+G_{o,out} = \frac{K_{p,in}G_{o,in}}{1 + K_{p,in}G_{o,in}} \ ,
 \label{eq:tf2}
 \end{equation}
 
-\textit{Krivulja mjesta korijena} otvorenog kruga vanjske petlje prikazana je Slikom (\ref{fig:KMK_out}), njen uvećan prikaz Slikom (\ref{fig:KMK_out_zoom}), a odabir pojačanja P regulatora vanjske petlje Slikom (\ref{fig:vanjska_Kp}):
+gdje je $K_{p,in} = 0.111$, a $G_{o,in}$  je jednak (\ref{eq:tf}) s uvrštenim parametrima:
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{vanjska}
-	\caption{\textit{Krivulja mjesta korijena} otvorenog kruga vanjske regulacijske petlje}
-	\label{fig:KMK_out}
-\end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{vanjska_zoom}
-	\caption{Uvećan prikaz \textit{krivulje mjesta korijena} otvorenog kruga vanjske regulacijske petlje}
-	\label{fig:KMK_out_zoom}
-\end{figure}
+\begin{equation}
+G_{o,in} = \frac{1}{s(6.4875\cdot10^{-5}s^{2} + 0.0022s  + 0.0210)} \ ,
+\label{eq:Goin}
+\end{equation}
+
+pa slijedi konačan izraz za $G_{o,out}$:
+
+\begin{equation}
+G_{o,out} = \frac{0.111}{6.4875\cdot10^{-5}s^{3} + 0.0022s^{2}  + 0.0210s + 0.111} \ .
+\label{eq:Ginz}
+\end{equation}
+\medskip
+\textit{Krivulja mjesta korijena} otvorenog kruga vanjske petlje kao i odabir pojačanja P regulatora prikazano je Slikom (\ref{fig:vanjska_Kp}):
 
 \begin{figure}[H]
 	\centering
@@ -267,11 +249,25 @@ Konačan iznos pojačanja P regulatora vanjske upravljačke petlje jednak je:
  \begin{equation}
  \boxed{
  K_{p,out} = 1.3
- }
+ } \ .
  \label{eq:Kp_out}
  \end{equation}
+ 
+Slijedi opći zapis prijenosne funkcije zatvorenog kruga upravljanja:
 
-Stabilnost zatvorenog kruga vanjske petlje dokazuje se odzivom prijenosne funkcije zatvorenog kruga na jediničnu odskočnu pobudu (step) te je taj odziv prikazan Slikom (\ref{fig:step2}):
+\begin{equation}
+G_{z,out} = \frac{K_{p,out}G_{o,out}}{1 + K_{p,out}G_{o,out}} \ .
+\label{eq:Goutz}
+\end{equation}
+ 
+ Konačna prijenosna funkcija zatvorenog kruga upravljanja jednaka je:
+ 
+ \begin{equation}
+ G_{o,z} = \frac{0.1443}{6.4875\cdot10^{-5}s^{3} + 0.0022s^{2}  + 0.0210s + 0.2553} \ .
+ \label{eq:Goz}
+ \end{equation}
+
+Stabilnost zatvorenog kruga vanjske petlje dokazuje se odzivom prijenosne funkcije zatvorenog kruga (\ref{eq:Goz}) na jediničnu odskočnu pobudu (step) te je taj odziv prikazan Slikom (\ref{fig:step2}):
 
 \begin{figure}[H]
 	\centering

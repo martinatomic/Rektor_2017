@@ -18,6 +18,7 @@
 \usepackage{amssymb}
 \usepackage{esvect}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -30,6 +31,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{booktabs}
+\usepackage{mwe}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -162,27 +164,25 @@
 \usepackage{lscape}
 \begin{document}
 
-Određivanje parametara neizostavan je dio postupka modeliranja svakog sustava. Većinu parametara, kao što su masa i duljina, određuje se izravnim metodama, kao što su vaganje i mjerenje. Ostale parametre potrebno je odrediti eksperimentalnim putem. U prethodnom poglavlju izvedena je prijenosna funkcija modela (\ref{eq:tf}) u ovisnosti o parametrima $\zeta_{mm}$ i $\omega_{mm}$, odnosno u ovisnosti o nazivnoj frekvenciji i prigušenju sustava (pomične mase). Ti su parametri nepoznati te ih je potrebno identificirati. 
+Određivanje parametara neizostavan je dio postupka modeliranja svakog sustava. Većinu parametara, kao što su masa i duljina, određuje se izravnim metodama, kao što su vaganje i mjerenje. Ostale parametre potrebno je odrediti eksperimentalnim putem. U prethodnom poglavlju izvedena je prijenosna funkcija modela (\ref{eq:tf}) u ovisnosti o parametrima $\zeta_{mm}$, $\omega_{mm}$ i $I_{yy}$, odnosno u ovisnosti o prigušenju sustava, nazivnoj frekvenciji i momentu tromosti (pomične mase). Ti su parametri nepoznati te ih je potrebno identificirati. 
 
 \medskip
 
-Identifikacija sustava je postupak određivanja matematičkog modela sustava, kao i njegovih parametara, na temelju mjerenja ulazno/izlaznih signala sustava. Odnosno to je eksperimentalna analiza sustava. \cite{te}
-
-\medskip
+Identifikacija sustava je postupak određivanja matematičkog modela sustava, kao i njegovih parametara, na temelju mjerenja ulazno/izlaznih signala sustava. Odnosno to je eksperimentalna analiza sustava \cite{te}.
 
 \subsection{Identifikacija dinamike pokretnih masa}
 
-Identifikaciju parametara započinjemo odabirom modela. Pretpostavlja se kako dinamika koračnog sustava masa prati $PT_{2}S$ ponašanje (\ref{eq:pt2s}). $PT_{2}S$ član je sustav drugog reda s konjugirano-kompleksnim parom polova i bez nula. \cite{aupr} Za potrebe identifikacije izrađena je \textit{Matlab Simulink shema} koja ostvaruje ponašanje algoritma upravljanja pozicijom motora pokretanog na \textit{STM} kontroleru. U shemi su postavljeni generatori pulsa koji simuliraju takt vremenskog brojača (\textit{timer-a}) na \textit{STM} kontroleru. Na temelju toga se u određenim vremenskim trenutcima generira impuls koji simulira korak okreta motora. U slučaju da se motor mora gibati većom brzinom, pulsevi se generiraju češće. 400 pulseva jednako je \textit{8 cm} hoda motora. Odziv sustava, odnosno dinamike mase koju je potrebno identificirati, prikazan je Slikom \ref{fig:masa} u nastavku:
+Identifikaciju parametara započinjemo odabirom modela. Pretpostavlja se kako dinamika koračnog sustava masa prati $PT_{2}S$ ponašanje (\ref{eq:pt2s}). $PT_{2}S$ član je sustav drugog reda s konjugirano-kompleksnim parom polova i bez nula \cite{aupr}. Za potrebe identifikacije izrađena je \textit{Matlab Simulink shema} koja ostvaruje ponašanje algoritma upravljanja pozicijom motora pokretanog na \textit{STM} kontroleru. U shemi su postavljeni generatori pulsa koji simuliraju takt vremenskog brojača (\textit{timer-a}) na \textit{STM} kontroleru. Na temelju toga se u određenim vremenskim trenutcima generira impuls koji simulira korak okreta motora. U slučaju da se motor mora gibati većom brzinom, pulsevi se generiraju češće. 400 pulseva jednako je \textit{8 cm} hoda motora. Odziv sustava, odnosno dinamike mase koju je potrebno identificirati, prikazan je Slikom \ref{fig:masa} u nastavku:
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.28]{dinamika_masa}
+	\includegraphics[scale=0.25]{dinamika_masa}
 	\caption{Dinamika pomične mase}
 	\label{fig:masa}
 \end{figure}
 
 
-Identifikacija započinje proračunom relativnog koeficijenta prigušenja $\zeta_{mm}$. $\zeta_{mm}$ je glavni čimbenik u $PT_{2}S$ članu koji određuje oscilatornost sustava, dok prirodna frekvencija neprigušenih oscilacija $\omega_{n}$ određuje brzinu odziva sustava. \cite{aupr} Pozivom \textit{Matlab} naredbe \textit{stepinfo} na izlazni signal sustava, dobije se informacija o vremenima porasta (\ref{eq:tr}), prvog maksimuma (\ref{eq:tm}) te smirivanja (\ref{eq:te}) koji su potrebni za daljnji proračun parametara. 
+Identifikacija započinje proračunom relativnog koeficijenta prigušenja $\zeta_{mm}$. $\zeta_{mm}$ je glavni čimbenik u $PT_{2}S$ članu koji određuje oscilatornost sustava, dok prirodna frekvencija neprigušenih oscilacija $\omega_{n}$ određuje brzinu odziva sustava \cite{aupr}. Pozivom \textit{Matlab} naredbe \textit{stepinfo} na izlazni signal sustava, dobije se informacija o vremenima porasta (\ref{eq:tr}), prvog maksimuma (\ref{eq:tm}) te smirivanja (\ref{eq:te}) koji su potrebni za daljnji proračun parametara. 
 
 \medskip
 
@@ -215,7 +215,7 @@ $\omega_{mm}$ se računa koristeći preostalu jednadžbu (\ref{eq:tm}). Uz $t_{r
 
 \begin{equation}
 \boxed{
-\frac{x_{i}}{x_{i, ref}}(s) = \frac{2}{3.098\cdot10^{-3}s^{2} + 0.103 s + 1}
+\frac{x_{i}}{x_{i, ref}}(s) = \frac{1}{3.098\cdot10^{-3}s^{2} + 0.103 s + 1}
 }
 \label{eq:mase_tf}
 \end{equation}
@@ -226,7 +226,6 @@ $\omega_{mm}$ se računa koristeći preostalu jednadžbu (\ref{eq:tm}). Uz $t_{r
 	\caption{Identificirana dinamika pokretnih masa}
 	\label{fig:masa_din}
 \end{figure}
-
 
 \subsection{Identifikacija momenta tromosti}
 
@@ -291,13 +290,42 @@ Prelaskom u Laplaceovu domenu, te izražavanjem parametra $\omega_{y}$ koji je p
 gdje je $K_{identif.}$ nepoznati parametar koji se identificira te je jednak $\frac{1}{I_{yy}}$, dok je $u$ poznati upravljački signal koji se koristi kao pobuda sustava identifikacije.
 
 Identifikacija se provodi u programskom okruženju \textit{Matlab} koristeći \textit{fminsearch} metodu. Eksperimentalna analiza ponovljena je na četiri skupa mjerenja, identificirani odzivi i parametri prikazani su Slikom (\ref{fig:Iyy}):   
+    
+
+
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{identif_mac}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{1}
+		\caption{$I_{yy} = 0.0990 \ kg \cdot m^{2}$}
+		\label{fig:mj1}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{2}
+		\caption{K$I_{yy} = 0.08515 \ kg \cdot m^{2}$}
+		\label{fig:mj2}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{3}
+		\caption{$I_{yy} = 0.0981 \ kg \cdot m^{2}$}
+		\label{fig:mj3}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{4}
+		\caption{$I_{yy} = 0.06055 \ kg \cdot m^{2}$}
+		\label{fig:mj4}
+	\end{subfigure}
+	
 	\caption{Rezultat identifikacije momenta tromosti}
 	\label{fig:Iyy}
-\end{figure}
+\end{figure} 
+
+
 
 Konačan iznos momenta tromosti $I_{yy}$ odabiremo kao srednju vrijednost dobivenih rezultata:
 
@@ -334,7 +362,7 @@ $ L$ & $0.2520 \ m $ &  Duljina kraka letjelice    \\
 $\omega_{mm} $ & $ 17.9921 \ rad\/s$ & Nazivna frekvencija kliznog mehanizma pokretnih masa     \\
 $\zeta_{mm} $ & $ 0.9254 \ rad\/s$ & Faktor prigušivanja kliznog mehanizma pokretnih masa      \\  
 $T_{r} $ & $ 0.2 \ s$ &  Vremenska konstanta rotora    \\
-$\Delta \ell $ & $\pm0.17 \ m $ &  Maksimalan hod pokretnih masa    \\  
+$\Delta \ell $ & $\pm0.08 \ m $ &  Maksimalan hod pokretnih masa    \\  
 $z_{m} $ & $ 0$ & Vertikalan pomak masa s obzirom na ishodište     \\ 
 $T_{s} $ & $ 0.01 \ s$ &  Vrijeme uzorkovanja diskretnog sustava    \\ \hline
 \end{tabular}
