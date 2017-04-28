@@ -256,7 +256,7 @@ Prilikom izrade prototipa elektroničkog sklopovlja utvrđena je potreba postoja
 
 \subsubsection{Pogon koračnih motora}
 
-Pogon koračnih motora ostvaren je gotovim sklopom \textit{A4988}, prikazan Slikom \ref{Slika:stepper_driver}. Navedeni sklop ima sadržano upravljanje naponima i strujama svake faze koračnog motora. Pogonski sklop predstavlja međusklop između koračnog motora i mikroprocesora. Mikroprocesor postavljanjem logičkih razina na predviđene pinove upravlja smjerom vrtnje i rezolucijom koraka. Kretanje motora se izvodi generiranjem impulsnog signala. Generiranje impulsnog signala je ostvareno prikladnom programskom potporom mikrokontrolera. Specifikacije sklopa \textit{A4988} prikazane su Tablicom \ref{tab:specifikacija_stepper_driver}.
+Pogon koračnih motora ostvaren je gotovim sklopom \textit{A4988}, prikazan Slikom \ref{Slika:stepper_driver}. Navedeni sklop ima sadržano upravljanje naponima i strujama svake faze koračnog motora. Pogonski sklop predstavlja međusklop između koračnog motora i mikroprocesora. Mikroprocesor, postavljanjem logičkih razina na predviđene pinove, upravlja smjerom vrtnje i rezolucijom koraka. Kretanje motora se izvodi generiranjem impulsnog signala. Generiranje impulsnog signala je ostvareno prikladnom programskom potporom mikrokontrolera. Specifikacije sklopa \textit{A4988} prikazane su Tablicom \ref{tab:specifikacija_stepper_driver}.
 
 
 \begin{figure}[H]
@@ -411,7 +411,7 @@ Za ispravno i sigurno povezivanje elektroničkog sklopovlja s okolnim uređajima
 
 
 \subsubsection{Dynamixel}
- Upravljanje Dynamixel motorima ostvaruje se prikladnom elektroničkom i programskom potporom. Osnova elektroničkog sklopovlja za Dynamixel komunikaciju je sklop za dvosmjernu komunikaciju. Mikrokontroler upravlja sklopom za dvosmjernu komunikaciju, koristeći 3 signala: \textit{DYN\_SEL}(odabir smjera komunikacije), \textit{DYN\_RX}(primanje podatka s Dynamixel motora) i \textit{DYN\_TX}(slanje podatka na Dynamixel motore). Uz sklop za dvosmjernu komunikaciju postavljeni su odgovarajući otpornici i NPN tranzistori za usklađivanje napona logičkih razina. Napajanje je osigurano izravno s baterije, a stabilizacija napona je ostvarena kondenzatorom iznosa 220 uF. Kondenzator se na tiskanoj pločici nalazi neposredno pored konektora za Dynamixel.
+ Upravljanje Dynamixel motorima ostvaruje se prikladnom elektroničkom i programskom potporom. Osnova elektroničkog sklopovlja za Dynamixel komunikaciju je sklop za dvosmjernu komunikaciju. Mikrokontroler upravlja sklopom za dvosmjernu komunikaciju, koristeći 3 signala: \textit{DYN\_SEL} (odabir smjera komunikacije), \textit{DYN\_RX} (primanje podatka s Dynamixel motora) i \textit{DYN\_TX} (slanje podatka na Dynamixel motore). Uz sklop za dvosmjernu komunikaciju postavljeni su odgovarajući otpornici i NPN tranzistori za usklađivanje napona logičkih razina. Napajanje je osigurano izravno s baterije, a stabilizacija napona je ostvarena kondenzatorom iznosa 220 uF. Kondenzator se na tiskanoj pločici nalazi neposredno pored konektora za Dynamixel.
 
 \begin{table}[H]
 	\centering
@@ -430,7 +430,7 @@ Za ispravno i sigurno povezivanje elektroničkog sklopovlja s okolnim uređajima
 
 
 \subsubsection{CAN}
-Fizički sloj CAN komunikacije ostvaren je primjenom posebnog sklopa za CAN komunikaciju. Specifikacije sklopa su prikazane Tablicom \ref{tab:specifikacija_CAN_bus}. Naveni sklop zadovoljava standard norme ISO 11898-2, za fizički sloj CAN komunikacije visoke brzine. Napajanje sklopa ostvareno je korištenjem reguliranog napona 3.3V, uz dodavanje dodatnih kondenzatora za stabilizaciju napona. Kondenzatori su na tiskanoj pločici postavljeni neposredno pored sklopa. Mikrokontroler upravlja primanjem i slanjem podataka pomoću dva signala(\textit{DRV\_IN} - slanje, \textit{DRV\_OUT} - primanje). Izlaz iz sklopa su dvije CAN linije, visoke i niske razine. Refleksije na kraju linije su spriječene dodavanjem otpornika iznosa 120 Ohm.
+Fizički sloj CAN komunikacije ostvaren je primjenom posebnog sklopa za CAN komunikaciju. Specifikacije sklopa su prikazane Tablicom \ref{tab:specifikacija_CAN_bus}. Naveni sklop zadovoljava standard norme ISO 11898-2, za fizički sloj CAN komunikacije visoke brzine. Napajanje sklopa ostvareno je korištenjem reguliranog napona 3.3V, uz dodavanje dodatnih kondenzatora za stabilizaciju napona. Kondenzatori su na tiskanoj pločici postavljeni neposredno pored sklopa. Mikrokontroler upravlja primanjem i slanjem podataka pomoću dva signala (\textit{DRV\_IN} - slanje, \textit{DRV\_OUT} - primanje). Izlaz iz sklopa su dvije CAN linije, visoke i niske razine. Refleksije na kraju linije su spriječene dodavanjem otpornika iznosa 120 Ohm.
 
 \begin{table}[H]
 	\centering
@@ -450,7 +450,7 @@ Fizički sloj CAN komunikacije ostvaren je primjenom posebnog sklopa za CAN komu
 \subsection{Tiskana pločica - PCB}
 
 \subsubsection{Projektiranje tiskane pločice}
-Nakon izrade shema elektroničkog sklopovlja slijedi projektiranje tiskane pločice. Tiskana pločica je dvoslojna, a dimenzijama je identična dimenziji osnovne ploče smještene na tijelu letjelice. Projektiranje tiskane pločice se obavlja također u \textit{Altium Designer} CAD alatu. U nastavku slijedi kratki pregled procesa projektiranja tiskane pločice:
+Nakon izrade shema elektroničkog sklopovlja slijedi projektiranje tiskane pločice. Tiskana pločica je dvoslojna, a dimenzijama je identična dimenziji osnovne ploče smještene na tijelu letjelice. Projektiranje tiskane pločice se obavlja također u \textit{Altium Designer} CAD alatu. U nastavku Tlijedi kratki pregled procesa projektiranja tiskane pločice:
 
 \begin{center}
 	\begin{enumerate}

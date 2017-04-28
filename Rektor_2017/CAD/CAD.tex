@@ -163,7 +163,7 @@
 \usepackage{lscape}
 \begin{document}
 
-U ovom poglavlju opisana je mehanička konstrukcija letjelice. Osnova je postojeća laboratorijska letjelica  \textit{ArduCopter}. Letjelica  \textit{ArduCopter} standarnog je dizajna, s četiri pogonska \textit{beskolektorska DC} motora s pripadnim  elektroničkim upravljačima brzine(\textit{ESC - eng. Electronic Speed Control}). Zbog jednostavnog i modularnog dizajna, letjelica je prikladna platforma za razne promjene i proširenja raznim upravljačkim uređajima, senzorima i aktuatorima. U \textit{LARICS} laboratoriju trenutno postoji nekoliko modela letjelica ovog tipa koje se koriste za većinu eksperimenata. Dizajn i veličina letjelice prikladna je za većinu eksperimenata koji se provode u laboratoriju, uključujući planiranje i izvođenje trajektorija u prostoru, manipulaciju objekata i drugo. Upravo zato odlučeno je modificirati jednu od postojećih konstrukcija te izraditi platformu za eksperimentalno testiranje novog koncepta upravljanja višerotorskom letjelicom. Glavna modifikacija odnosi se na dizajniranje i izradu mehanizma kojim će se omogućiti pomak mase na kraku. Također, potrebno je smjestiti sve ostale komponente nužne za upravljanje letjelicom, poput kontrolera leta i upravljačkog sklopovlja pomičnih masa. Za izradu dizajna korišten je CAD alat. Konačni 3D izgled modificirane letjelice prikazan je Slikom \ref{Slika:3D_drone_final}.
+U ovom poglavlju opisana je mehanička konstrukcija letjelice. Osnova je postojeća laboratorijska letjelica  \textit{ArduCopter}. Letjelica  \textit{ArduCopter} standarnog je dizajna, s četiri pogonska \textit{beskolektorska DC} motora s pripadnim  elektroničkim upravljačima brzine (\textit{ESC - eng. Electronic Speed Control}). Zbog jednostavnog i modularnog dizajna, letjelica je prikladna platforma za razne promjene i proširenja raznim upravljačkim uređajima, senzorima i aktuatorima. U \textit{LARICS} laboratoriju trenutno postoji nekoliko modela letjelica ovog tipa koje se koriste za većinu eksperimenata. Dizajn i veličina letjelice prikladna je za većinu eksperimenata koji se provode u laboratoriju, uključujući planiranje i izvođenje trajektorija u prostoru, manipulaciju objekata i drugo. Upravo zato odlučeno je modificirati jednu od postojećih konstrukcija te izraditi platformu za eksperimentalno testiranje novog koncepta upravljanja višerotorskom letjelicom. Glavna modifikacija odnosi se na dizajniranje i izradu mehanizma kojim će se omogućiti pomak mase na kraku. Također, potrebno je smjestiti sve ostale komponente nužne za upravljanje letjelicom, poput kontrolera leta i upravljačkog sklopovlja pomičnih masa. Za izradu dizajna korišten je CAD alat. Konačni 3D izgled modificirane letjelice prikazan je Slikom \ref{Slika:3D_drone_final}.
 
 \begin{figure}[H]
 	\centering
@@ -228,7 +228,7 @@ Zadaća je aktuatora pokretne mase gibanje mase po kraku letjelice, čime se ost
 	\label{tab:specifikacija_steppera}
 	\begin{tabular}{|l|c|}
 		\hline
-		\textbf{Proizvođač} &PROIZVOĐAČ \\ \hline 
+		\textbf{Proizvođač} &Changzhou Songyang Machinery \& Electronics Co. \\ \hline 
 		\textbf{Model} & NEMA 14  \\ \hline 
 		\textbf{Veličina} & 35mm x 35mm x 36mm, neuključujući osovinu  \\ \hline 
 		\textbf{Masa} & 180 g  \\ \hline 
@@ -248,7 +248,7 @@ Koračni motor odabran je zato jer pruža mogućnost korištenja upravljanja poz
 
 \subsubsection{Kretanje po kraku letjelice}
 
-Kretanje mase po kraku je linijsko. Kako bi kretanje mase imalo minimalno trenje, odabran je klizni mehanizam prikazan Slikom \ref{fig:klizni_mehanizam}. Klizni mehanizam montiran je s doljnje strane kraka, a za aluminijsku kvadratnu cijev pričvršćen je s dva vijka. Klizni mehanizam se sastoji od vodilice i kolica. Na kolicima se nalazi klizni mehanizam koji se sastoji od sitnih kuglica koje omogućavaju klizno gibanje s malim trenjem. Na kolica kliznog mehanizma montirano je posebno konstruiran prihvat koračnog motora(Slika \ref{fig:stepper_bracket}), kojim se koračni motor učvršćuje na klizni mehanizam.
+Kretanje mase po kraku je linijsko. Kako bi kretanje mase imalo minimalno trenje, odabran je klizni mehanizam prikazan Slikom \ref{fig:klizni_mehanizam}. Klizni mehanizam montiran je s donje strane kraka, a za aluminijsku kvadratnu cijev pričvršćen je s dva vijka. Klizni mehanizam se sastoji od vodilice i kolica. Na kolicima se nalazi klizni mehanizam koji se sastoji od sitnih kuglica koje omogućavaju klizno gibanje s malim trenjem. Na kolica kliznog mehanizma montirano je posebno konstruiran prihvat koračnog motora (Slika \ref{fig:stepper_bracket}), kojim se koračni motor učvršćuje na klizni mehanizam.
 
 
 \begin{figure}[H]
@@ -268,7 +268,7 @@ Kretanje mase po kraku je linijsko. Kako bi kretanje mase imalo minimalno trenje
 \end{figure}
 
 Rotacija koračnih motora se prenosi na linijsko gibanje po kraku pomoću zupčastog prijenosa. Zupčasti prijenos je dizajniran tako da jedan puni okret koračnog motora pokriva cijeli potrebni raspon linijskog gibanje na kraku. 
-Zupčasta letva(Slika \ref{fig:gear_rack}) je zaljepljena na bočnu stranu aluminijske kvadratne cijevi pomoću dvokomponentnog ljepila. Zupčanik(Slika \ref{fig:gear_gear}) se montira na adapter osovine koračnog motora pomoću 4 vijka. 
+Zupčasta letva (Slika \ref{fig:gear_rack}) je zaljepljena na bočnu stranu aluminijske kvadratne cijevi pomoću dvokomponentnog ljepila. Zupčanik (Slika \ref{fig:gear_gear}) se montira na adapter osovine koračnog motora pomoću 4 vijka. 
 
 
 
