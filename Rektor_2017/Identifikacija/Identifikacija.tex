@@ -168,7 +168,7 @@ Određivanje parametara neizostavan je dio postupka modeliranja svakog sustava. 
 
 \medskip
 
-Identifikacija sustava je postupak određivanja matematičkog modela sustava, kao i njegovih parametara, na temelju mjerenja ulazno/izlaznih signala sustava. Odnosno to je eksperimentalna analiza sustava \cite{te}.
+Identifikacija sustava je postupak određivanja matematičkog modela sustava, kao i njegovih parametara, na temelju mjerenja ulazno/izlaznih signala sustava. Odnosno to je eksperimentalna analiza sustava \cite{te}. Iako je matematički model izveden za sustav u letu, identifikacija parametara napravljena je na temelju eksperimenata provedenih na stalku s jednom osi rotacije. Unatoč provedbi eksperimenata na jednoj osi, dinamika je kvalitativno slična sustavu u letu \cite{haus3}.
 
 \subsection{Identifikacija dinamike pokretnih masa}
 
@@ -176,7 +176,7 @@ Identifikaciju parametara započinjemo odabirom modela. Pretpostavlja se kako di
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.25]{dinamika_masa}
+	\includegraphics[width=\textwidth]{dinamika_masa}
 	\caption{Dinamika pomične mase}
 	\label{fig:masa}
 \end{figure}
@@ -211,7 +211,7 @@ Na temelju prethodnih jednadžbi intuitivno je jasno kako se pomnim odabirom fiz
 \label{eq:zeta}
 \end{equation}
 
-$\omega_{mm}$ se računa koristeći preostalu jednadžbu (\ref{eq:tm}). Uz $t_{r} = 0.139 \ [s]$, $t_{m} = 0.638 \ [s]$ i $t_{1\%} = 0.383 \ [s]$ slijedi da su $\zeta_{mm} = 0.925$, a $\omega_{mm} = 12.992 \ [s^{-1}]$. Simulirajući odziv (\ref{eq:pt2s}) člana s ovim parametrima uočena je potreba za ubrzanjem dobivenog odziva. To je dovelo do dodatnog eksperimentalnog ugađanja parametra $\omega_{mm}$ koji direktno utječe na brzinu odziva, te je on u konačnici jedak $\omega_{mm} = 17.992 \ [s^{-1}]$. Identificirana dinamika pomičnih masa prikazana je Slikom (\ref{fig:masa_din}), dok je konačna prijenosna funkcija jednaka (\ref{eq:mase_tf}):
+$\omega_{mm}$ se računa koristeći preostalu jednadžbu (\ref{eq:tm}). Uz $t_{r} = 0.139 \ [s]$, $t_{m} = 0.638 \ [s]$ i $t_{1\%} = 0.383 \ [s]$ slijedi da su $\zeta_{mm} = 0.925$, a $\omega_{mm} = 12.992 \ [s^{-1}]$. Simulirajući odziv (\ref{eq:pt2s}) člana s ovim parametrima uočena je potreba za ubrzanjem dobivenog odziva. To je dovelo do dodatnog eksperimentalnog ugađanja parametra $\omega_{mm}$ koji direktno utječe na brzinu odziva, te je on u konačnici jedak $\omega_{mm} = 17.992 \ [s^{-1}]$. Identificirana dinamika pomičnih masa prikazana je Slikom \ref{fig:masa_din}, dok je konačna prijenosna funkcija jednaka (\ref{eq:mase_tf}):
 
 \begin{equation}
 \boxed{
@@ -289,7 +289,7 @@ Prelaskom u Laplaceovu domenu, te izražavanjem parametra $\omega_{y}$ koji je p
 \medskip
 gdje je $K_{identif.}$ nepoznati parametar koji se identificira te je jednak $\frac{1}{I_{yy}}$, dok je $u$ poznati upravljački signal koji se koristi kao pobuda sustava identifikacije.
 
-Identifikacija se provodi u programskom okruženju \textit{Matlab} koristeći \textit{fminsearch} metodu. Eksperimentalna analiza ponovljena je na četiri skupa mjerenja, identificirani odzivi i parametri prikazani su Slikom (\ref{fig:Iyy}):   
+Identifikacija se provodi u programskom okruženju \textit{Matlab} koristeći \textit{fminsearch} funkciju kojom je implementirana \textit{Simplex metoda optimiranja} \cite{fmin}. Eksperimentalna analiza ponovljena je na četiri skupa mjerenja, identificirani odzivi i parametri prikazani su Slikom \ref{fig:Iyy}:  
     
 
 
@@ -305,7 +305,7 @@ Identifikacija se provodi u programskom okruženju \textit{Matlab} koristeći \t
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=1\linewidth]{2}
-		\caption{K$I_{yy} = 0.08515 \ kg \cdot m^{2}$}
+		\caption{$I_{yy} = 0.08515 \ kg \cdot m^{2}$}
 		\label{fig:mj2}
 	\end{subfigure}
 	\begin{subfigure}{.5\textwidth}

@@ -163,7 +163,7 @@
 \usepackage{lscape}
 \begin{document}
 
-U sklopu ovog poglavlja dan je pregled nelinearnog matematičkog modela letjelice koji opisuje njezinu rotaciju i translaciju. Na temelju tog modela obavlja se njegova linearizacija u svrhu dobivanja prijenosne funkcije sustava koja se potom koristi za upravljanje. Potpuni model nalazi se u literaturi \cite{haus3}.
+U sklopu ovog poglavlja dan je pregled nelinearnog matematičkog modela letjelice koji opisuje njezinu rotaciju i translaciju. Na temelju tog modela obavlja se njegova linearizacija u svrhu izvoda prijenosne funkcije sustava koja se potom koristi za upravljanje. Potpuni model nalazi se u literaturi \cite{haus3}.
 
 \medskip
 
@@ -217,11 +217,11 @@ gdje su redom $v_{0}$ brzina $L_{0}$ koordinatnog sustava s obzirom na $L_{I}$ i
 
 Prethodni izraz (\ref{eq:vi}) moguće je proširiti uvrštavanjem izraza (\ref{eq:vc}), te tako izraziti brzinu pokretne mase $i$ kao funkciju brzine $v_{c}$: 
 \begin{equation}
- {v_{i} = v_{c} + v_{0,i} - v_{0,c} + \omega \times r_{c,i}} \ .
+ {v_{i} = v_{c} + v_{0,i} - v_{0,c} + \omega \times r_{c,i}} \ ,
 \label{eq:vi2}
 \end{equation}
 
-$v_{0,i}$ označava relativnu brzinu $i$-te mase, $r_{c,i}$ označava poziciju $i$-te mase u $L_{CoG}$ koordinatnom sustavu, dok se $v_{0,c}$ računa prema (\ref{eq:v0c}):
+gdje $v_{0,i}$ označava relativnu brzinu $i$-te mase, $r_{c,i}$ označava poziciju $i$-te mase u $L_{CoG}$ koordinatnom sustavu, dok se $v_{0,c}$ računa prema (\ref{eq:v0c}):
 \begin{equation}
  {v_{0,c} = \frac{\sum_{i=1}^{4}m_{i}\dot{r}_{0,i}}{M}} \ .
 \label{eq:v0c}
@@ -247,7 +247,7 @@ f_{i1}  =K_{m}T_{r}U_{i}\left(\sin\left(\frac{\pi}{2}i\right) \bm{\hat{i}} - \co
 \label{eq:fi1}
 \end{equation}
 
-gdje je $K_{m}$ konstanta motora, $T_{r}$ prijenosni omjer a $U_{i}$ napon na motorima.  $\bm{\hat{i}}$ i  $\bm{\hat{j}}$ jedinični vektori u $L_{0}$ koordinatnom sustavu koji pokazuju redom u $x$ i $y$ smjeru.
+gdje je $K_{m}$ konstanta motora, $T_{r}$ prijenosni omjer, a $U_{i}$ napon na motorima.  $\bm{\hat{i}}$ i  $\bm{\hat{j}}$ su jedinični vektori u $L_{0}$ koordinatnom sustavu koji pokazuju redom u $x$ i $y$ smjeru.
 
 \item Sila gravitacije:
 \begin{equation}
@@ -266,7 +266,7 @@ gdje je $c_{d}$ koeficijent trenja.
 
 \end{enumerate}
 
-Kombiniranjem izraza (\ref{eq:vi}) i (\ref{eq:Lidot}) slijedi izraz za linearnu akceleraciju $t$-te pomične mase:
+Kombiniranjem izraza (\ref{eq:vi}) i (\ref{eq:Lidot}) slijedi izraz za linearnu akceleraciju $i$-te pomične mase:
 
 \begin{equation}
 \frac{d^{\omega}}{dt}v_{0,i} = \frac{1}{m_{i}}\left(\sum_{k=1}^{3}f_{ik}\right) - \frac{d^{\omega}}{dt} \left( v_{0} + \omega \times r_{0,i} \right)  \ .
@@ -358,7 +358,7 @@ gdje je s $I_{i}$ označen moment inercije $i$-tog dijela. Sljedeći izraz kori�
 \end{equation}
 
 
-Vanjski momenti koji djeluju na sustav letjelice te koji se sljedeći modeliraju su:
+\noindent Vanjski momenti koji djeluju na sustav letjelice su:
 \begin{enumerate}
 \item Moment koji stvaraju sile rotora na kraku
 \begin{equation}
@@ -379,12 +379,12 @@ gdje je $b_{m}$ momentna konstanta propulzijskog sustava, $\zeta_{j} =  1$ ako s
 
 \item Moment uzrokovan silom gravitacije
 \begin{equation}
-M_{g} = r_{c,b} \times (-m_{b}g \bm{\hat{K}}) + \sum_{i=1}^{4} \times (-m_{i}g \bm{\hat{K}}) \ ,
+M_{g} = r_{c,b} \times (-m_{b}g \bm{\hat{K}}) + \sum_{i=1}^{4} r_{c,i}\times (-m_{i}g \bm{\hat{K}}) \ ,
 \label{eq:Mg}
 \end{equation}
 \end{enumerate}
 
-gdje su $r_{c,b}$ i $r_{c,i}$ pozicije letjelice i $i$-te pomične mase.
+gdje su $r_{c,b}$ i $r_{c,i}$ pozicije letjelice i $i$-te pomične mase s obzirom na centar mase.
 
 Pri opisu pozicije letjelice koriste se standardni Eulerovi kutevi. Za prelazak iz globalnog u lokalni koordinatni sustav letjelice koristi se pretpostavka da se letjelice prvo rotira oko $z$ osi za \textit{kut zakretanja} $\psi$, zatim da se rotira oko $y$ osi za \textit{kut naginjanja} $\theta$, te konačno da se rotira oko $x$ osi za \textit{kut kotrljanja} $\varphi$.
 
@@ -462,7 +462,7 @@ gdje $F_{r,j}$ označava magnitudu sile $j$-tog rotora.
 
 \medskip
 
-Proširenjem izraza (\ref{eq:dtM}) može se izlučiti izraz za kutnu brzinu u smjeru $y$ osi dobije se sljedeći izraz:
+Proširenjem izraza (\ref{eq:dtM}) može se izlučiti izraz za kutnu brzinu u smjeru $y$ osi  čime se dobije sljedeći izraz:
 \begin{equation}
 \begin{split}
 I_{yy}\dot{\omega}_{y}  & = \sum_{j=1}^{4}M_{fj}\cdot  \bm{\hat{j}} - (I_{xx} - I_{zz})\omega_{x}\omega_{z} \\
@@ -477,7 +477,7 @@ I_{yy}\dot{\omega}_{y}  & = \sum_{j=1}^{4}M_{fj}\cdot  \bm{\hat{j}} - (I_{xx} - 
 \label{eq:Iyyw}
 \end{equation}
 
-gdje su $I_{xx}$, $I_{yy}$ i $I_{zz}$ nominalni momenti inercije u $x$, $y$ i $z$ smjeru, te su proračunati za početne pozicije pomičnih masa, smještenih u centru kraka letjelice. Drugi dio izraza u (\ref{eq:Iyyw}) rezultat je žiroskopskog efekta, treći, četvrti, peti i šesti dio izraza proizlaze iz promjene momenta inercije, dok su sedmi i osmi dio izraza rezultat $\omega \times \sum_{i=1}^{4} = r_{c,i}\times L_{0,i}$ projeciranog na $y$ os, a deveti dio izraza jednak je $y$ komponenti od $\sum_{i=1}^{4}r_{c,i}\times \dot{L}_{0,i}$.  
+gdje su $I_{xx}$, $I_{yy}$ i $I_{zz}$ nominalni momenti inercije u $x$, $y$ i $z$ smjeru, te su proračunati za početne pozicije pomičnih masa, smještenih u centru kraka letjelice. Drugi dio izraza u (\ref{eq:Iyyw}) rezultat je žiroskopskog efekta, treći, četvrti, peti i šesti dio izraza proizlaze iz promjene momenta inercije, dok su sedmi i osmi dio izraza rezultat $\omega \times \sum_{i=1}^{4} r_{c,i}\times L_{0,i}$ projeciranog na $y$ os, a deveti dio izraza jednak je $y$ komponenti od $\sum_{i=1}^{4}r_{c,i}\times \dot{L}_{0,i}$.  
 
 \medskip
 
