@@ -166,7 +166,7 @@ Cilj modeliranja ovog sustava jest biti u mogućnosti u konačnici tim sustavom 
 
 \medskip
 
-Iz navedenih razloga modelira se kaskadna upravljačka struktura za sustav letjelice s pomičnim masama. Unutarnja petlja zatvara se po kutnoj brzini, dok se vanjska petlja zatvara po poziciji, odnosno kutu. Načelna upravljačka shema prikazana je Slikom (\ref{fig:upr}). 
+Iz navedenih razloga modelira se kaskadna upravljačka struktura za sustav letjelice s pomičnim masama. Unutarnja petlja zatvara se po kutnoj brzini, dok se vanjska petlja zatvara po poziciji, odnosno kutu. Načelna upravljačka shema prikazana je Slikom \ref{fig:upr}. 
 
 
 \begin{figure}[H]
@@ -186,7 +186,7 @@ Određivanje parametara regulatora obavlja se u dva koraka. Prvo se određuje po
 
 \medskip
 
-Za određivanje \textit{krivulje mjesta korijena} unutarnje petlje koristi se prijenosna funkcija otvorenog kruga (\ref{eq:tf}) te parametri iz Tablice (\ref{params}). Sustav je stabilan za sva pojačanja za koja se nule i polovi nalaze unutar jedinične kružnice.  Rezultirajući KMK prikazan je Slikom (\ref{fig:unutarnja_Kp}), na kojoj je također prikazan način odabira parametra P regulatora unutarnje petlje. Na slici su prikazana dva očitanja pojačanja. Jedan se nalazi na rubu stabilnosti i jednak je $K= 0.7$. S obzirom na da je to pojačanje na rubu stabilnosti znači da ako se odabere $K_{p} > K$, sustav će postati nestabilan. Iz tog razloga odabire se pojačanje koje polove povlači unutar jedinične kružnice, prikazano drugim očitanjem. Konačan iznos pojačanja P regulatora unutarnje upravljačke petlje jednak je:
+Za određivanje \textit{krivulje mjesta korijena} unutarnje petlje koristi se prijenosna funkcija otvorenog kruga (\ref{eq:tf}) te parametri iz Tablice \ref{params}. Sustav je stabilan za sva pojačanja za koja se nule i polovi nalaze unutar jedinične kružnice.  Rezultirajući KMK prikazan je Slikom \ref{fig:unutarnja_Kp}, na kojoj je također prikazan način odabira parametra P regulatora unutarnje petlje. Na slici su prikazana dva očitanja pojačanja. Jedan se nalazi na rubu stabilnosti i jednak je $K= 0.7$. S obzirom na da je to pojačanje na rubu stabilnosti znači da ako se odabere $K_{p} > K$, sustav će postati nestabilan. Iz tog razloga odabire se pojačanje koje polove povlači unutar jedinične kružnice, prikazano drugim očitanjem. Konačan iznos pojačanja P regulatora unutarnje upravljačke petlje jednak je:
 
  \begin{equation}
  \boxed{
@@ -203,7 +203,7 @@ Za određivanje \textit{krivulje mjesta korijena} unutarnje petlje koristi se pr
 	\label{fig:unutarnja_Kp}
 \end{figure}
 
-Stabilnost zatvorenog kruga unutarnje petlje može se ispitati odzivom prijenosne funkcije tog zatvorenog kruga na jediničnu odskočnu pobudu (step) te je taj odziv prikazan Slikom (\ref{fig:step1}):
+Stabilnost zatvorenog kruga unutarnje petlje može se ispitati odzivom prijenosne funkcije tog zatvorenog kruga na jediničnu odskočnu pobudu (step) te je taj odziv prikazan Slikom \ref{fig:step1}:
 
 \begin{figure}[H]
 	\centering
@@ -235,7 +235,7 @@ G_{o,out} = \frac{0.1}{6.4875\cdot10^{-5}s^{3} + 0.0022s^{2}  + 0.0210s + 0.111}
 \label{eq:Ginz}
 \end{equation}
 \medskip
-\textit{Krivulja mjesta korijena} otvorenog kruga vanjske petlje kao i odabir pojačanja P regulatora prikazano je Slikom (\ref{fig:vanjska_Kp}):
+\textit{Krivulja mjesta korijena} otvorenog kruga vanjske petlje kao i odabir pojačanja P regulatora prikazano je Slikom \ref{fig:vanjska_Kp}:
 
 \begin{figure}[H]
 	\centering
@@ -267,7 +267,7 @@ G_{z,out} = \frac{K_{p,out}G_{o,out}}{1 + K_{p,out}G_{o,out}} \ .
  \label{eq:Goz}
  \end{equation}
 
-Stabilnost zatvorenog kruga vanjske petlje dokazuje se odzivom prijenosne funkcije zatvorenog kruga (\ref{eq:Goz}) na jediničnu odskočnu pobudu (step) te je taj odziv prikazan Slikom (\ref{fig:step2}):
+Stabilnost zatvorenog kruga vanjske petlje dokazuje se odzivom prijenosne funkcije zatvorenog kruga (\ref{eq:Goz}) na jediničnu odskočnu pobudu (step) te je taj odziv prikazan Slikom \ref{fig:step2}:
 
 \begin{figure}[H]
 	\centering
